@@ -7,7 +7,7 @@
 
 <p class="sh1">Présentation</p>
 
-<img class="img" src="metro.png" alt="--">
+<img class="img" src="Images/metro.png" alt="--">
 
 <h2>Objectif</h2>
 <span class="oi oi-target" aria-hidden="true"></span>
@@ -57,12 +57,10 @@ else
                         <td>@A.Poids</td>
                     </tr>
                 }
-
         </tbody>
     </table>
     <a>Soit un poids total de @TotalPoids jours</a>
     </div>
-
 
     @foreach( SEtape E in GetEtapes)
     {
@@ -71,28 +69,22 @@ else
         <div class="bgDiv">
             <p>@E.Objectif</p>
         </div>
+
         @foreach( Atelier A in E.Ateliers)
         {
             <h3>@A.Nom</h3>
-            <span class="oi oi-code" aria-hidden="true"></span>
-            <br />
-
+            <span class="oi oi-code" aria-hidden="true"></span><br />
             @if(@A.Prerequis != null){<a>Prérequis : @A.Prerequis</a> <br/>}
             <a>Poids : @A.Poids</a>
 
             <h4>Processus</h4>
             <ul>
-            @foreach(string p in A.Processus)
-            {
-                <li>@p</li>
-            }
+            @foreach(string p in A.Processus){ <li>@p</li> }
             </ul>
+
             <h4>Livrables</h4>
             <ul>
-            @foreach (string l in A.Livrables)
-            {
-                <li>@l</li>
-            }
+            @foreach (string l in A.Livrables){<li>@l</li> }
             </ul>
         }
     }
@@ -106,15 +98,16 @@ else
 
 @code {
     private SEtape[]? GetEtapes;
-    private int TotalPoids;
+    private int TotalPoids = 0;
 
     protected override async Task OnInitializedAsync()
     {
-        TotalPoids = 0;
-        GetEtapes = await Http.GetFromJsonAsync<SEtape[]>("/sample-data/SIMPLE.json");
-        @foreach (SEtape E in GetEtapes)
-            @foreach (Atelier A in E.Ateliers)
+
+        GetEtapes = await Http.GetFromJsonAsync<SEtape[]>("/Data/SIMPLE.json");
+        @foreach(SEtape E in GetEtapes)
+            @foreach(Atelier A in E.Ateliers)
                 TotalPoids += A.Poids;
+
     }
 
     public class SEtape

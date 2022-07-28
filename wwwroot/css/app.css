@@ -164,7 +164,7 @@ img {
 }
 
 .bgBan{
-    background-image: url("../bg.jpg");
+    background-image: url("../Images/bg.jpg");
     background-size: 120% auto;
     transition: background-position 0s !important;
     background-repeat: no-repeat !important;

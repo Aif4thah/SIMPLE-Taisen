@@ -12,6 +12,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Update="wwwroot\Data\SIMPLE.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
     <None Update=".htaccess">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
