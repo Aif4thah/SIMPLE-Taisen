@@ -13,9 +13,10 @@
 <span class="oi oi-target" aria-hidden="true"></span>
 <p>Amener le niveau de sécurité d'un projet à maturité en 40 jours ouvrés</p>
 
-<h2>Référentiels</h2>
-<span class="oi oi-compass" aria-hidden="true"></span>
-<div class="bgDiv">
+
+<div class="bgDiv">  
+    <h2>Référentiels</h2>
+    <span class="oi oi-compass" aria-hidden="true"></span><br />
     <a href="(https://www.ssi.gouv.fr/uploads/2018/11/guide-securite-numerique-agile-anssi-pa-v1.pdf">ANSSI: Sécurité & Agilité numériques</a><br />
     <a href="(https://owasp.org/www-project-application-security-verification-standard/">OWASP: Application Security Vérification Standard</a><br />
     <a href="(https://social.technet.microsoft.com/wiki/contents/articles/51078.comprendre-le-modele-stride-fr-fr.aspx">Microsoft: STRIDE</a><br />
@@ -39,53 +40,55 @@ else
 {
     <h2>Synthèse</h2>
     <div class="bgDiv">
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Etape</th>
-                <th>Atelier</th>
-                <th>Poids</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach( SEtape E in GetEtapes)
-                @foreach( Atelier A in E.Ateliers)
-                {
-                    <tr>
-                        <td>@E.Etape</td>
-                        <td>@A.Nom</td>
-                        <td>@A.Poids</td>
-                    </tr>
-                }
-        </tbody>
-    </table>
-    <a>Soit un poids total de @TotalPoids jours</a>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Etape</th>
+                    <th>Atelier</th>
+                    <th>Poids</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach( SEtape E in GetEtapes)
+                    @foreach( Atelier A in E.Ateliers)
+                    {
+                        <tr>
+                            <td>@E.Etape</td>
+                            <td>@A.Nom</td>
+                            <td>@A.Poids</td>
+                        </tr>
+                    }
+            </tbody>
+        </table>
     </div>
+    <a>Soit un poids total de @TotalPoids jours</a>
+    
 
     @foreach( SEtape E in GetEtapes)
     {
+        
         <h2>@E.Etape</h2>
-        <span class="oi oi-map-marker" aria-hidden="true"></span>
-        <div class="bgDiv">
+        <span class="oi oi-briefcase" aria-hidden="true"></span>       
             <p>@E.Objectif</p>
-        </div>
-
+        
         @foreach( Atelier A in E.Ateliers)
         {
-            <h3>@A.Nom</h3>
-            <span class="oi oi-code" aria-hidden="true"></span><br />
-            @if(@A.Prerequis != null){<a>Prérequis : @A.Prerequis</a> <br/>}
-            <a>Poids : @A.Poids</a>
+            <div class="bgDiv">
+                <h3>@A.Nom</h3>
+                <span class="oi oi-clipboard" aria-hidden="true"></span><br />
+                @if(@A.Prerequis != null){<a>Prérequis : @A.Prerequis</a> <br/>}
+                <a>Poids : @A.Poids</a>
 
-            <h4>Processus</h4>
-            <ul>
-            @foreach(string p in A.Processus){ <li>@p</li> }
-            </ul>
+                <h4>Processus</h4>
+                <ul>
+                @foreach(string p in A.Processus){ <li>@p</li> }
+                </ul>
 
-            <h4>Livrables</h4>
-            <ul>
-            @foreach (string l in A.Livrables){<li>@l</li> }
-            </ul>
+                <h4>Livrables</h4>
+                <ul>
+                @foreach (string l in A.Livrables){<li>@l</li> }
+                </ul>
+            </div>
         }
     }
 
