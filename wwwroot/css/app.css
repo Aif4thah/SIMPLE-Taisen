@@ -196,11 +196,21 @@ img {
     top: -2px;
     margin-right: 8px;
     filter: brightness(88%);
-    -webkit-filter: brightness(88%);
-
-    
+    -webkit-filter: brightness(88%);    
 }
 
-.SIMPLE {
-    text-align: left !important;
+
+textarea {
+    width: 50%;
+    height: 150px;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background-color: #f8f8f8;
+    resize: none;
+}
+
+legend{
+    margin-top: 12px;
 }
