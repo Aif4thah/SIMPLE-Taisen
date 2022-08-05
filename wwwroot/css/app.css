@@ -147,13 +147,13 @@ h4 {
 }
 
 .imgLogo {
-
-    height: 40px;
+    margin-top: -10px;
+    height: 45px;
     width: auto;
 }
 
 .imgBan {
-    width: 50%;
+    width: 40%;
     height: auto;
 }
 

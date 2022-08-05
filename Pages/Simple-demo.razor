@@ -1,5 +1,6 @@
 ﻿@page "/simple-demo"
 @inject HttpClient Http
+@inject IJSRuntime JSRuntime 
 
 <PageTitle>SIMPLE</PageTitle>
 
@@ -80,18 +81,18 @@ else
 
                 <fieldset>
                     <legend>Processus:</legend>
-                    @foreach(string p in A.Processus){
-                        <input class="CheckBox" type="checkbox" name=@p value=@p /><br/>
-                        <label for=@p>@p</label><br/>
+                    @foreach(Processus P in A.Processus){
+                        <input class="CheckBox" type="checkbox" @bind=@P.Fin name=@P.Nom value=@P.Nom/><br/>   
+                        <label for=@P.Nom>@P.Nom</label><br/>
                 }
                 </fieldset>
 
                 <fieldset>
                     <legend>Livrables:</legend>
-                @foreach (string l in A.Livrables){
-                    <p>@l</p>
+                @foreach(Livrables L in A.Livrables){
+                    <p>@L.Nom</p>
                     <form>
-                        <textarea>...</textarea>
+                        <textarea @bind=@L.CR></textarea>
                     </form>
                 }
                 </fieldset>
@@ -100,6 +101,7 @@ else
     }
 
 }
+
 <h3>Licence</h3>
 <span class="oi oi-badge" aria-hidden="true"></span>
     <div class="bgDiv">
@@ -124,18 +126,46 @@ else
         public string Nom { get; set; }
         public string ?Prerequis { get; set; }
         public int Poids { get; set; }
-        public  IEnumerable<string> Processus { get; set; }
-        public  IEnumerable<string> Livrables { get; set; }
+        public  IEnumerable<Processus> Processus { get; set; }
+        public  IEnumerable<Livrables> Livrables { get; set; }
+    }
+
+    public class Processus{
+        public string Nom {get; set;}
+        public bool Fin {get; set;}
+    }
+
+    public class Livrables{
+        public string Nom {get; set;}
+        public string? CR {get; set;}
     }
 
     protected override async Task OnInitializedAsync()
     {
-
         GetEtapes = await Http.GetFromJsonAsync<SEtape[]>("/Data/SIMPLE.json");
-        @foreach(SEtape E in GetEtapes)
-            @foreach(Atelier A in E.Ateliers)
+    @foreach(SEtape E in GetEtapes)
+    @foreach(Atelier A in E.Ateliers)
                 TotalPoids += A.Poids;
 
     }
+
+   public async Task Save()
+  {
+    await JSRuntime.InvokeVoidAsync("localStorage.setItem", "test", "test" );
+  }
+
+  /*
+  public async Task Read()
+  {
+    currentInputValue = await JSRuntime.InvokeAsync<string>("localStorage.getItem", "name");
+  }
+
+  public async Task Delete()
+  {
+    await JSRuntime.InvokeAsync<string>("localStorage.removeItem", "name");
+  }
+  */
+
+
 
 }

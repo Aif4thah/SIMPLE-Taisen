@@ -8,15 +8,30 @@
         "Prerequis": null,
         "Poids":  1,
         "Processus": [
-          "Présentation des fonctions métier",
-          "Mise à disposition de la documentation (DAT, cartographies)",
-          "Accès au code source et/ou à l'application",
-          "Le cas échéant: accès aux résultats des précédentes recettes et rapports des tests d’intrusion"
+          {
+            "Nom": "Présentation des fonctions métier",
+            "Fin": true
+          },
+          {
+            "Nom": "Mise à disposition de la documentation (DAT, cartographies)",
+            "Fin": false
+          },
+          {
+            "Nom": "Accès au code source et/ou à l'application",
+            "Fin": false
+          },
+          {
+            "Nom": "Le cas échéant: accès aux résultats des précédentes recettes et rapports des tests d’intrusion",
+            "Fin": false
+          }
         ],
         "Livrables": [
-          "La liste des fonctions métier",
-          "Accusé de réception des documents transmis",
-          "Confirmation que l'accès aux sources et/ou à l'application est fonctionnel"
+          {
+            "Nom": "La liste des fonctions métier"
+          },
+          { "Nom": "Accusé de réception des documents transmis" },
+
+          { "Nom": "Confirmation que l'accès aux sources et/ou à l'application est fonctionnel" }
         ]
       },
       {
@@ -24,12 +39,23 @@
         "Prerequis": "S1",
         "Poids":  1,
         "Processus": [
-          "SCRUM, Kanban, point projet",
-          "COPIL, COSEC et autres comitologies",
-          "Échange entre le projet et les équipes en charge de la SSI]"
+          {
+            "Nom": "SCRUM, Kanban, point projet",
+            "Fin": false
+          },
+          {
+            "Nom": "COPIL, COSEC et autres comitologies",
+            "Fin": false
+          },
+          {
+            "Nom": "Échange entre le projet et les équipes en charge de la SSI]",
+            "Fin": false
+          }
         ],
         "Livrables": [
-          "Compte rendu comportant la liste des échanges et les éléments pris en compte"
+          {
+            "Nom": "Compte rendu comportant la liste des échanges et les éléments pris en compte" 
+          }
         ]
       }
     ]
@@ -43,14 +69,19 @@
         "Nom": "I1 : Identification des fonctions sensibles",
         "Prerequis": "S",
         "Poids": 2,
-        "Processus": 
-        [
-          "Analyse des éléments fournis par le projet",
-          "Élaboration d’une liste exhaustive des fonctions sensibles du point de vue du métier, comportant des enjeux pour la sécurité - en s'appuyant notamment sur les méthodes de modélisation des menaces"
+        "Processus": [
+          {
+            "Nom": "Analyse des éléments fournis par le projet",
+            "Fin": false
+          },
+          {
+            "Nom": "Élaboration d’une liste exhaustive des fonctions sensibles du point de vue du métier, comportant des enjeux pour la sécurité - en s'appuyant notamment sur les méthodes de modélisation des menaces",
+            "Fin": false
+          }
         ],
         "Livrables": 
         [
-          "Proposition d'une liste exhaustive des fonctions sensibles du point de vue du métier et leurs enjeux pour la sécurité"
+          { "Nom": "Proposition d'une liste exhaustive des fonctions sensibles du point de vue du métier et leurs enjeux pour la sécurité" }
         ]
       },
       {
@@ -59,12 +90,19 @@
         "Poids":  1,
         "Processus": 
         [
-          "Le projet et le métier challengent (retour I2) ou valident le travail (passage à l''étape M)"
+          {
+            "Nom": "Le projet et le métier challengent (retour I2) ou valident le travail (passage à l''étape M)",
+            "Fin": false
+          }
         ],
         "Livrables": 
         [
-          "La liste définitive des fonctions métier",
-          "L'étude des enjeux de sécurité / modélisation des menaces justifiant la liste définitive"
+          {
+            "Nom": "La liste définitive des fonctions métier"
+          },
+          {
+            "Nom": "L'étude des enjeux de sécurité / modélisation des menaces justifiant la liste définitive" 
+          }
         ]
       }
     ]
@@ -78,10 +116,15 @@
         "Prerequis": "I",
         "Poids": 1,
         "Processus": [
-          "Recueil les objectifs de sécurité du projet : Règlementation, normes, objectif PSSI"
+          {
+            "Nom": "Recueil les objectifs de sécurité du projet : Règlementation, normes, objectif PSSI",
+            "Fin": false
+          }
         ],
         "Livrables": [
-          "Accusé de réception : Liste des documents reçus et utilisés pour l'étude" 
+          {
+            "Nom": "Accusé de réception : Liste des documents reçus et utilisés pour l'étude"
+          }
         ]
       },
       {
@@ -89,11 +132,18 @@
         "Prerequis": "M1",
         "Poids": 4,
         "Processus": [
-          "Élaboration de la liste des besoins / exigences de sécurité pour chaque fonction sensible (étape I) à partir des objectifs de l’organisation"
+          {
+            "Nom": "Élaboration de la liste des besoins / exigences de sécurité pour chaque fonction sensible (étape I) à partir des objectifs de l’organisation",
+            "Fin": false
+          }
         ],
         "Livrables": [
-          "Liste des besoins retenus pour la sécurisation des fonctions métier",
-          "Proposition d'un ratio: besoins pris en compte / durée de la prestation"
+          {
+            "Nom": "Liste des besoins retenus pour la sécurisation des fonctions métier"
+          },
+          {
+            "Nom": "Proposition d'un ratio: besoins pris en compte / durée de la prestation" 
+          }
         ]
       }
     ]
@@ -107,18 +157,30 @@
         "Prerequis": "M",
         "Poids": 3,
         "Processus": [
-          "Élaborer la liste des mesures techniques de sécurité à implémenter, en adéquation avec chaque fonction sensible portée par le projet, la menace et les exigeances de sécurité"
+          {
+            "Nom": "Élaborer la liste des mesures techniques de sécurité à implémenter, en adéquation avec chaque fonction sensible portée par le projet, la menace et les exigeances de sécurité",
+            "Fin": false
+          }
         ],
         "Livrables": [
-          "Proposition d'une liste de mesure de sécurité à implémenter par le projet."
+          {
+            "Nom": "Proposition d'une liste de mesure de sécurité à implémenter par le projet." 
+          }
         ]
       },
       {
         "Nom": "P2 : Validation des mesures de sécurité",
         "Prerequis": "P1",
         "Poids":  1,
-        "Processus": [ "Challenge ou validation des mesures par le projet et par la sécurité" ],
-        "Livrables": [ "Liste définitive des mesures de sécurité à implémenter par le projet" ]
+        "Processus": [        
+          {
+            "Nom": "Challenge ou validation des mesures par le projet et par la sécurité",
+            "Fin": false
+          }
+        ],
+        "Livrables": [
+          { "Nom": "Liste définitive des mesures de sécurité à implémenter par le projet" } 
+        ]
       }
     ]
   },
@@ -129,22 +191,40 @@
       {
         "Nom": "L1 : Accompagnement pour l’implémentation des mesures de sécurité",
         "Prerequis": "P",
-        "Poids":  5,
+        "Poids": 5,
         "Processus": [
-          "Apporter les réponses aux questions du projet lors de l’implémentation réalisée par les équipes de développement",
-          "Apporter une expertise technique quant aux difficultés rencontrées lors de l'implémentation"
+          {
+            "Nom": "Apporter les réponses aux questions du projet lors de l’implémentation réalisée par les équipes de développement",
+            "Fin": false
+          },
+          {
+            "Nom": "Apporter une expertise technique quant aux difficultés rencontrées lors de l'implémentation",
+            "Fin": false
+          }
         ],
         "Livrables": [
-          "Comptes rendus d'ateliers" 
+          {
+            "Nom": "Comptes rendus d'ateliers"
+          } 
         ]
       },
       {
         "Nom": "L2 : Accompagnement à l’élaboration de jeux de tests",
         "Prerequis": "L1",
         "Poids":  10,
-        "Processus": ["En liaison étroite avec le projet élaboration de jeux de tests adaptés parmi les possibilités suivantes : Tests unitaires,SAST,DAST,IAST"],
+        "Processus": [
+          {
+            "Nom": "En liaison étroite avec le projet élaboration de jeux de tests adaptés parmi les possibilités suivantes : Tests unitaires,SAST,DAST,IAST",
+            "Fin": false
+          }
+        ],
         "Livrables": [
-          "Les éléments fournis au projet", "Les points discutés et les réponses apportées"
+          {
+            "Nom": "Les éléments fournis au projet"
+          },
+          {
+            "Nom": "Les points discutés et les réponses apportées"
+          }
         ]
       }
     ]
@@ -158,23 +238,45 @@
         "Prerequis": "L",
         "Poids":  6,
         "Processus": [
-          "Réalisation d’une recette de sécurité vérifiant chaque mesure de sécurité",
-          "Possibilité de test d’intrusion en boite blanche"
+          {
+            "Nom": "Réalisation d’une recette de sécurité vérifiant chaque mesure de sécurité",
+            "Fin": false
+          },
+          {
+            "Nom": "Possibilité de test d’intrusion en boite blanche",
+            "Fin": false
+          }
         ],
-        "Livrables": [ "PV de recette ou rapport d'audit" ]
+        "Livrables": [
+          {
+            "Nom": "PV de recette ou rapport d'audit"
+          }
+        ]
       },
       {
         "Nom": "E2 : Livraison",
         "Prerequis": "E1",
         "Poids":  2,
         "Processus": [
-          "Mise en forme et rédaction des livrables",
-          "Après signature du procès-verbal de livraison: suppression des données de la prestation, à l'exception du PV de livraison"
+          {
+            "Nom": "Mise en forme et rédaction des livrables",
+            "Fin": false
+          },
+          {
+            "Nom": "Après signature du procès-verbal de livraison: suppression des données de la prestation, à l'exception du PV de livraison",
+            "Fin": false
+          }
         ],
         "Livrables": [
-          "Outillage et du processus de tests (E1) afin que le projet soit autonome",
-          "éventuelles recommandations supplémentaires permettant de poursuivre la sécurisation du projet",
-          "PV de livraison"
+          {
+            "Nom": "Outillage et du processus de tests (E1) afin que le projet soit autonome"
+          },
+          {
+            "Nom": "éventuelles recommandations supplémentaires permettant de poursuivre la sécurisation du projet"
+          },
+          {
+            "Nom": "PV de livraison"
+          }
         ]
       }
     ]
