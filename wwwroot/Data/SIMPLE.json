@@ -9,7 +9,7 @@
         "Poids":  1,
         "Processus": [
           {
-            "Nom": "Présentation des fonctions métier",
+            "Nom": "Présentation des fonctions 'métier''",
             "Fin": true
           },
           {
@@ -48,7 +48,7 @@
             "Fin": false
           },
           {
-            "Nom": "Échange entre le projet et les équipes en charge de la SSI]",
+            "Nom": "Échange entre le projet et les équipes en charge de la SSI",
             "Fin": false
           }
         ],
