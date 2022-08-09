@@ -1,6 +1,6 @@
 ﻿@page "/simple-demo"
 @inject HttpClient Http
-@inject IJSRuntime JSRuntime 
+@inject Blazored.LocalStorage.ILocalStorageService localStorage
 
 <PageTitle>SIMPLE</PageTitle>
 
@@ -39,12 +39,18 @@
 }
 else
 {
-    <h2>Synthèse</h2>
+    <h2>Étapes</h2>
+    <div class="bgDiv">
+        <ul>
+        @foreach( SEtape E in GetEtapes){<li>@E.Etape</li>}
+        </ul>
+    </div>
+
+    <h2>Ateliers</h2>
     <div class="bgDiv">
         <table class="table">
             <thead>
                 <tr>
-                    <th>Etape</th>
                     <th>Atelier</th>
                     <th>Poids</th>
                 </tr>
@@ -54,7 +60,6 @@ else
                     @foreach( Atelier A in E.Ateliers)
                     {
                         <tr>
-                            <td>@E.Etape</td>
                             <td>@A.Nom</td>
                             <td>@A.Poids</td>
                         </tr>
@@ -62,11 +67,15 @@ else
             </tbody>
         </table>
     </div>
+
+
     <a>Soit un poids total de @TotalPoids jours</a>
+
+    <h2>Détail</h2>
+    <p><i>les sections suivantes sont en cours de développement. Elles présentent le détail de la méthode et les fonctionnalités qui lui seront prochainement associées</i></p>
 
     @foreach( SEtape E in GetEtapes)
     {
-        
         <h2>@E.Etape</h2>
         <span class="oi oi-briefcase" aria-hidden="true"></span>       
             <p>@E.Objectif</p>
@@ -95,18 +104,20 @@ else
                         <textarea @bind=@L.CR></textarea>
                     </form>
                 }
+                <button class="button" @onclick="Save">Sauvegarder l'atelier</button>
                 </fieldset>
+                
             </div>
         }
     }
 
 }
-
 <h3>Licence</h3>
 <span class="oi oi-badge" aria-hidden="true"></span>
     <div class="bgDiv">
         <a>GPL-3.0 license</a>
     </div>
+
 
 @code {
 
@@ -142,29 +153,33 @@ else
 
     protected override async Task OnInitializedAsync()
     {
-        GetEtapes = await Http.GetFromJsonAsync<SEtape[]>("/Data/SIMPLE.json");
-    @foreach(SEtape E in GetEtapes)
-    @foreach(Atelier A in E.Ateliers)
-                TotalPoids += A.Poids;
+        try
+        {
+            GetEtapes = await localStorage.GetItemAsync<SEtape[]>("SIMPLE");
+            @foreach(SEtape E in GetEtapes) // exception here
+                @foreach(Atelier A in E.Ateliers)
+                    TotalPoids += A.Poids;
+        }
+        catch
+        {
+            GetEtapes = await Http.GetFromJsonAsync<SEtape[]>("/Data/SIMPLE.json");
+            @foreach(SEtape E in GetEtapes)
+                @foreach(Atelier A in E.Ateliers)
+                    TotalPoids += A.Poids;
+        }
 
     }
 
-   public async Task Save()
-  {
-    await JSRuntime.InvokeVoidAsync("localStorage.setItem", "test", "test" );
-  }
+    public async Task Save()
+    {
+        await localStorage.SetItemAsync("SIMPLE", GetEtapes );        
+    }
 
-  /*
-  public async Task Read()
-  {
-    currentInputValue = await JSRuntime.InvokeAsync<string>("localStorage.getItem", "name");
-  }
+    public async Task Load()
+    {
+        GetEtapes = await localStorage.GetItemAsync<SEtape[]>("SIMPLE");
+    }
 
-  public async Task Delete()
-  {
-    await JSRuntime.InvokeAsync<string>("localStorage.removeItem", "name");
-  }
-  */
 
 
 
