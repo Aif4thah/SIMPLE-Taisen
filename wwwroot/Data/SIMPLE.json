@@ -10,7 +10,7 @@
         "Poids":  1,
         "Interlocuteurs": 
         [ 
-          "Equipe de développement" 
+          "Équipe de développement" 
         ],
         "Processus": [
           {
@@ -53,7 +53,7 @@
         "Poids": 3,
         "Processus": [
           {
-            "Nom": "Établir la listes de fonction sensibles",
+            "Nom": "Établir la liste de fonctions sensibles",
             "Referentiel": 
             {
               "Nom": "Microsoft : STRIDE Threat Modeling Tool", 
@@ -71,10 +71,10 @@
         "Nom": "I2",
         "Description":"Validation de la liste des fonctions sensibles",
         "Prerequis": "I1",
-        "Poids":  1,
+        "Poids": 1,
         "Interlocuteurs": 
         [ 
-          "Equipe de développement", "Metier"
+          "Équipe de développement", "Metier"
         ],
         "Processus": 
         [
@@ -126,7 +126,7 @@
   },
   {
     "Etape": "Proposer des mesures de sécurité",
-    "Objectif": "En plus d'être efficaces, les mesures de sécurité doivent être compréhensibles, réalistes et implémentables pour le projet. Le travail et l'atelier ci-dessous sont des étapes itératives qui consistent à élaborer et faire valider les mesures de sécurité retenue. Ces ateliers se répètent jusqu'à obtenir un niveau de maturité satisfaisant.",
+    "Objectif": "Établir et valider les mesures de sécurité. Les ateliers P1 et P2 peuvent donner lieu à plusieurs itérations afin d'avoir des mesures de sécurité adaptées, efficaces et réalistes pour le projet.",
     "Ateliers": [
       {
         "Nom": "P1",
@@ -135,7 +135,7 @@
         "Poids": 3,
         "Processus": [
           {
-            "Nom": "Élaborer la liste des mesures techniques de sécurité à implémenter, en adéquation avec chaque fonction sensible portée par le projet, la menace et les exigeances de sécurité",
+            "Nom": "Élaborer la liste des mesures techniques permettant d'atteindre les objectifs de sécurité",
             "Referentiel": 
             {
               "Nom": "OWASP: Application Security Vérification Standard", 
@@ -155,13 +155,19 @@
         "Description": "Validation des mesures de sécurité",
         "Prerequis": "P1",
         "Poids":  1,
-        "Processus": [        
+        "Interlocuteurs": 
+        [ 
+          "Équipe de développement", "Équipe sécurité ou RSSI"
+        ],
+        "Processus": 
+        [        
           {
             "Nom": "Challenge ou validation des mesures par le projet et par la sécurité",
             "Fin": false
           }
         ],
-        "Livrables": [
+        "Livrables": 
+        [
           { "Nom": "Liste définitive des mesures de sécurité à implémenter par le projet" } 
         ]
       }
@@ -176,11 +182,11 @@
         "Description": "Accompagnement pour l’implémentation des mesures de sécurité",
         "Prerequis": "P",
         "Poids": 5,
+        "Interlocuteurs": 
+        [ 
+          "Équipe de développement" 
+        ],
         "Processus": [
-          {
-            "Nom": "Apporter les réponses aux questions du projet lors de l’implémentation réalisée par les équipes de développement",
-            "Fin": false
-          },
           {
             "Nom": "Apporter une expertise technique quant aux difficultés rencontrées lors de l'implémentation",
             "Fin": false
@@ -188,7 +194,7 @@
         ],
         "Livrables": [
           {
-            "Nom": "Comptes rendus d'ateliers"
+            "Nom": "Compte rendu d'atelier"
           } 
         ]
       },
@@ -196,27 +202,28 @@
         "Nom": "L2",
         "Description": "Accompagnement à l’élaboration de jeux de tests",
         "Prerequis": "L1",
-        "Poids":  10,
+        "Poids":  5,
+        "Interlocuteurs": 
+        [ 
+          "Équipe de développement" 
+        ],
         "Processus": [
           {
-            "Nom": "En liaison étroite avec le projet élaboration de jeux de tests adaptés parmi les possibilités suivantes : Tests unitaires,SAST,DAST,IAST",
+            "Nom": "En liaison étroite avec le projet, élaboration de jeux de tests adaptés parmi les possibilités suivantes : Tests unitaires, SAST, DAST, IAST",
             "Fin": false
           }
         ],
         "Livrables": [
           {
-            "Nom": "Les éléments fournis au projet"
-          },
-          {
-            "Nom": "Les points discutés et les réponses apportées"
-          }
+            "Nom": "Compte rendu d'atelier"
+          } 
         ]
       }
     ]
   },
   {
     "Etape": "Evaluer l’efficacité des mesures implémentées",
-    "Objectif": "Cette dernière étape vérifie que le niveau de sécurité visé est bien atteint. Des éléments complémentaires sont transmis au projet afin qu'il puisse poursuivre l'effort de sécurisation en autonomie.",
+    "Objectif": "Cette dernière étape vérifie que le niveau de sécurité visé est bien atteint.",
     "Ateliers": [
       {
         "Nom": "E1",
@@ -227,15 +234,11 @@
           {
             "Nom": "Réalisation d’une recette de sécurité vérifiant chaque mesure de sécurité",
             "Fin": false
-          },
-          {
-            "Nom": "Possibilité de test d’intrusion en boite blanche",
-            "Fin": false
           }
         ],
         "Livrables": [
           {
-            "Nom": "PV de recette ou rapport d'audit"
+            "Nom": "PV de recette"
           }
         ]
       },
@@ -244,20 +247,21 @@
         "Description": "Livraison",
         "Prerequis": "E1",
         "Poids":  2,
+        "Interlocuteurs": 
+        [ 
+          "Commanditaire" 
+        ],
         "Processus": [
           {
-            "Nom": "Mise en forme et rédaction des livrables",
+            "Nom": "Envoi d'un PV de Livraison",
             "Fin": false
           },
           {
-            "Nom": "Après signature du procès-verbal de livraison: suppression des données de la prestation, à l'exception du PV de livraison",
+            "Nom": "Après signature du PV de livraison: suppression des données de la prestation (à l'exception du PV)",
             "Fin": false
           }
         ],
         "Livrables": [
-          {
-            "Nom": "Outillage et du processus de tests (E1) afin que le projet soit autonome"
-          },
           {
             "Nom": "éventuelles recommandations supplémentaires permettant de poursuivre la sécurisation du projet"
           },
