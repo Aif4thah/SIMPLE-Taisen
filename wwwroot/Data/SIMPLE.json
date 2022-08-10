@@ -1,19 +1,24 @@
 ﻿[
   {
-    "Etape": "S - S’intégrer au projet",
+    "Etape": "S’intégrer au projet",
     "Objectif": "L'objectif de cette étape est de prendre connaissance du contexte lié à l'application. Afin de faire progresser efficacement le niveau de sécurité, nous nous concentrons sur la vision du métier. Les éléments importants pour le métier seront les éléments à sécuriser en priorité.",
     "Ateliers": [
       {
-        "Nom": "S1 : Présentation du projet par les équipes de développement",
+        "Nom": "S1" ,
+        "Description": "Présentation du projet par les équipes de développement",
         "Prerequis": null,
         "Poids":  1,
+        "Interlocuteurs": 
+        [ 
+          "Equipe de développement" 
+        ],
         "Processus": [
           {
             "Nom": "Présentation des fonctions métier",
             "Fin": true
           },
           {
-            "Nom": "Mise à disposition de la documentation (DAT, cartographies)",
+            "Nom": "Mise à disposition de la documentation du projet",
             "Fin": false
           },
           {
@@ -21,61 +26,39 @@
             "Fin": false
           },
           {
-            "Nom": "Le cas échéant: accès aux résultats des précédentes recettes et rapports des tests d’intrusion",
+            "Nom": "Accès aux résultats des précédentes recettes et rapports des tests d’intrusion",
             "Fin": false
           }
         ],
         "Livrables": [
           {
-            "Nom": "La liste des fonctions métier"
+            "Nom": "Compte rendu de la présentation des fonctions métier"
           },
           { "Nom": "Accusé de réception des documents transmis" },
 
-          { "Nom": "Confirmation que l'accès aux sources et/ou à l'application est fonctionnel" }
+          { "Nom": "Confirmation que les accès transmis sont fonctionnels" }
         ]
-      },
-      {
-        "Nom": "S2 : (optionnel) Participation en tant qu’observateurs à une ou plusieurs réunions clés",
-        "Prerequis": "S1",
-        "Poids":  1,
-        "Processus": [
-          {
-            "Nom": "SCRUM, Kanban, point projet",
-            "Fin": false
-          },
-          {
-            "Nom": "COPIL, COSEC et autres comitologies",
-            "Fin": false
-          },
-          {
-            "Nom": "Échange entre le projet et les équipes en charge de la SSI",
-            "Fin": false
-          }
-        ],
-        "Livrables": [
-          {
-            "Nom": "Compte rendu comportant la liste des échanges et les éléments pris en compte" 
-          }
-        ]
-      }
+      }     
     ]
   },
   {
-    "Etape": "I - Identifier les fonctions sensibles",
-    "Objectif": "Le travail et l'atelier ci-dessous sont des étapes itératives qui consistent à élaborer et faire valider la liste précise et exhaustive des fonctions qui feront l'objet d'une sécurisation. L'itération se répète jusqu'à obtenir un niveau de maturité satisfaisant.",
+    "Etape": "Identifier les fonctions sensibles",
+    "Objectif": "Établir et valider la liste exhaustive des fonctions qui feront l'objet d'une sécurisation. Les Ateliers I1 et I2 peuvent donner lieu à plusieurs itérations.",
     "Ateliers": 
     [
       {
-        "Nom": "I1 : Identification des fonctions sensibles",
-        "Prerequis": "S",
-        "Poids": 2,
+        "Nom": "I1",
+        "Description":"Identification des fonctions sensibles",
+        "Prerequis": "S1",
+        "Poids": 3,
         "Processus": [
           {
-            "Nom": "Analyse des éléments fournis par le projet",
-            "Fin": false
-          },
-          {
-            "Nom": "Élaboration d’une liste exhaustive des fonctions sensibles du point de vue du métier, comportant des enjeux pour la sécurité - en s'appuyant notamment sur les méthodes de modélisation des menaces",
+            "Nom": "Établir la listes de fonction sensibles",
+            "Referentiel": 
+            {
+              "Nom": "Microsoft : STRIDE Threat Modeling Tool", 
+              "Uri": "https://docs.microsoft.com/en-us/azure/security/develop/threat-modeling-tool-threats"
+            },
             "Fin": false
           }
         ],
@@ -85,36 +68,48 @@
         ]
       },
       {
-        "Nom": "I2 : Validation des fonctions sensibles",
+        "Nom": "I2",
+        "Description":"Validation de la liste des fonctions sensibles",
         "Prerequis": "I1",
         "Poids":  1,
+        "Interlocuteurs": 
+        [ 
+          "Equipe de développement", "Metier"
+        ],
         "Processus": 
         [
           {
-            "Nom": "Le projet et le métier challengent (retour I2) ou valident le travail (passage à l''étape M)",
+            "Nom": "Les interlocuteurs challengent et valident le travail.",
+            "Referentiel":
+            {
+              "Nom":"ANSSI: Sécurité & Agilité numériques",
+              "Uri":"https://www.ssi.gouv.fr/uploads/2018/11/guide-securite-numerique-agile-anssi-pa-v1.pdf"
+            },
             "Fin": false
           }
         ],
         "Livrables": 
         [
           {
-            "Nom": "La liste définitive des fonctions métier"
-          },
-          {
-            "Nom": "L'étude des enjeux de sécurité / modélisation des menaces justifiant la liste définitive" 
+            "Nom": "La liste définitive des fonctions métier à sécuriser"
           }
         ]
       }
     ]
   },
   {
-    "Etape": "M - Maitriser les objectifs de sécurité",
-    "Objectif": "Une fois les éléments à sécuriser définis, il est nécessaire de connaitre les besoins de sécurité. L’étape vise à établir la jonction entre le métier et les objectifs du RSSI pour que l'effort de sécurisation coïncide avec les exigences de sécurité",
+    "Etape": "Maitriser les objectifs de sécurité",
+    "Objectif": "Une fois les éléments à sécuriser définis, il est nécessaire de connaitre les besoins de sécurité. L’étape vise à établir la jonction entre le métier et les objectifs du RSSI pour que l'effort de sécurisation en adéquation avec exigences de sécurité.",
     "Ateliers": [
       {
-        "Nom": "M1 : Recueil des objectifs de sécurité de l’organisation",
+        "Nom": "M1",
+        "Description": "Recueil des objectifs de sécurité de l’organisation",
         "Prerequis": "I",
         "Poids": 1,
+        "Interlocuteurs": 
+        [ 
+          "Responsable sécurité"
+        ],
         "Processus": [
           {
             "Nom": "Recueil les objectifs de sécurité du projet : Règlementation, normes, objectif PSSI",
@@ -123,42 +118,29 @@
         ],
         "Livrables": [
           {
-            "Nom": "Accusé de réception : Liste des documents reçus et utilisés pour l'étude"
-          }
-        ]
-      },
-      {
-        "Nom": "M2 : définition des besoins de sécurité du projet",
-        "Prerequis": "M1",
-        "Poids": 4,
-        "Processus": [
-          {
-            "Nom": "Élaboration de la liste des besoins / exigences de sécurité pour chaque fonction sensible (étape I) à partir des objectifs de l’organisation",
-            "Fin": false
-          }
-        ],
-        "Livrables": [
-          {
-            "Nom": "Liste des besoins retenus pour la sécurisation des fonctions métier"
-          },
-          {
-            "Nom": "Proposition d'un ratio: besoins pris en compte / durée de la prestation" 
+            "Nom": "Accusé de réception : Liste des documents reçus"
           }
         ]
       }
     ]
   },
   {
-    "Etape": "P : Proposer des mesures de sécurité",
+    "Etape": "Proposer des mesures de sécurité",
     "Objectif": "En plus d'être efficaces, les mesures de sécurité doivent être compréhensibles, réalistes et implémentables pour le projet. Le travail et l'atelier ci-dessous sont des étapes itératives qui consistent à élaborer et faire valider les mesures de sécurité retenue. Ces ateliers se répètent jusqu'à obtenir un niveau de maturité satisfaisant.",
     "Ateliers": [
       {
-        "Nom": "P1 : Identification des mesures de sécurité",
+        "Nom": "P1",
+        "Description": "Identification des mesures de sécurité",
         "Prerequis": "M",
         "Poids": 3,
         "Processus": [
           {
             "Nom": "Élaborer la liste des mesures techniques de sécurité à implémenter, en adéquation avec chaque fonction sensible portée par le projet, la menace et les exigeances de sécurité",
+            "Referentiel": 
+            {
+              "Nom": "OWASP: Application Security Vérification Standard", 
+              "Uri": "https://owasp.org/www-project-application-security-verification-standard/" 
+            },
             "Fin": false
           }
         ],
@@ -169,7 +151,8 @@
         ]
       },
       {
-        "Nom": "P2 : Validation des mesures de sécurité",
+        "Nom": "P2",
+        "Description": "Validation des mesures de sécurité",
         "Prerequis": "P1",
         "Poids":  1,
         "Processus": [        
@@ -185,11 +168,12 @@
     ]
   },
   {
-    "Etape": "L - Limiter la charge pour le projet",
+    "Etape": "Limiter la charge pour le projet",
     "Objectif": "Cette étape vise à fournir l'accompagnement nécessaire pour l'implémentation des mesures de sécurité et les vérifications à mettre en place avant leur passage en production.",
     "Ateliers": [
       {
-        "Nom": "L1 : Accompagnement pour l’implémentation des mesures de sécurité",
+        "Nom": "L1",
+        "Description": "Accompagnement pour l’implémentation des mesures de sécurité",
         "Prerequis": "P",
         "Poids": 5,
         "Processus": [
@@ -209,7 +193,8 @@
         ]
       },
       {
-        "Nom": "L2 : Accompagnement à l’élaboration de jeux de tests",
+        "Nom": "L2",
+        "Description": "Accompagnement à l’élaboration de jeux de tests",
         "Prerequis": "L1",
         "Poids":  10,
         "Processus": [
@@ -230,11 +215,12 @@
     ]
   },
   {
-    "Etape": "E - Évaluer l’efficacité des mesures implémentées",
+    "Etape": "Evaluer l’efficacité des mesures implémentées",
     "Objectif": "Cette dernière étape vérifie que le niveau de sécurité visé est bien atteint. Des éléments complémentaires sont transmis au projet afin qu'il puisse poursuivre l'effort de sécurisation en autonomie.",
     "Ateliers": [
       {
-        "Nom": "E1 : Test de l’application",
+        "Nom": "E1",
+        "Description": "Test de l’application",
         "Prerequis": "L",
         "Poids":  6,
         "Processus": [
@@ -254,7 +240,8 @@
         ]
       },
       {
-        "Nom": "E2 : Livraison",
+        "Nom": "E2",
+        "Description": "Livraison",
         "Prerequis": "E1",
         "Poids":  2,
         "Processus": [

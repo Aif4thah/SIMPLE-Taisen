@@ -13,7 +13,9 @@ namespace TAISEN.Classes
     public class Atelier
     {
         public string Nom { get; set; }
+        public string Description { get; set; }
         public string? Prerequis { get; set; }
+        public List<string>? Interlocuteurs {get; set;}
         public int Poids { get; set; }
         public IEnumerable<Processus> Processus { get; set; }
         public IEnumerable<Livrables> Livrables { get; set; }
@@ -22,6 +24,7 @@ namespace TAISEN.Classes
     public class Processus
     {
         public string Nom { get; set; }
+        public Referentiel? Referentiel { get; set; }
         public bool Fin { get; set; }
     }
 
@@ -29,6 +32,12 @@ namespace TAISEN.Classes
     {
         public string Nom { get; set; }
         public string? CR { get; set; }
+    }
+
+    public class Referentiel
+    {
+        public string Nom {get; set;}
+        public string Uri {get;set;}
     }
 
 
