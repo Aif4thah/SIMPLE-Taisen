@@ -1,0 +1,102 @@
+﻿@page "/simple"
+@inject HttpClient Http
+@inject Blazored.LocalStorage.ILocalStorageService localStorage
+@using TAISEN.Classes;
+
+<PageTitle>SIMPLE</PageTitle>
+
+<h1>Methode SIMPLE</h1>
+
+<p class="sh1">Présentation</p>
+
+<img class="img" src="Images/metro.png" alt="--">
+
+<h2>Objectif</h2>
+<span class="oi oi-target" aria-hidden="true"></span>
+<p>Amener le niveau de sécurité d'un projet à maturité en 40 jours ouvrés</p>
+
+
+<div class="bgDiv">  
+    <h2>Référentiels</h2>
+    <span class="oi oi-compass" aria-hidden="true"></span><br />
+    <a href="(https://www.ssi.gouv.fr/uploads/2018/11/guide-securite-numerique-agile-anssi-pa-v1.pdf">ANSSI: Sécurité & Agilité numériques</a><br />
+    <a href="(https://owasp.org/www-project-application-security-verification-standard/">OWASP: Application Security Vérification Standard</a><br />
+    <a href="(https://social.technet.microsoft.com/wiki/contents/articles/51078.comprendre-le-modele-stride-fr-fr.aspx">Microsoft: STRIDE</a><br />
+</div>
+
+<h2>Périmètre</h2>
+<span class="oi oi-crop" aria-hidden="true"></span>
+<p>Le champ de cette méthodologie cible les projets applicatifs ainsi que l'infrastructure sur laquelle ils reposent, ce qui inclut:</p>
+<ul>
+    <li>toute application métier, qu'il s'agisse d'un environnement  Web, industriel, IoT, cloud, hybride, etc.</li>
+    <li>le middleware, les librairies, les dépendances et les composants tiers</li>
+    <li>les composants du système d’exploitation, des microservices, ainsi que leur orchestration</li>
+</ul>
+
+
+@if (GetEtapes == null)
+{
+        <p><em>Chargement...</em></p>
+}
+else
+{
+    <h2>Étapes</h2>
+    <div class="bgDiv">
+        <ul>
+        @foreach( SEtape E in GetEtapes){<li>@E.Etape</li>}
+        </ul>
+    </div>
+
+    <h2>Ateliers</h2>
+    <div class="bgDiv">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Atelier</th>
+                    <th>Poids</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach( SEtape E in GetEtapes)
+                    @foreach( Atelier A in E.Ateliers)
+                    {
+                        <tr>
+                            <td>@A.Nom</td>
+                            <td>@A.Poids</td>
+                        </tr>
+                    }
+            </tbody>
+        </table>
+    </div>
+
+
+    <a>Soit un poids total de @TotalPoids jours</a>
+
+}
+
+    <form>
+        <a href="/simple-demo">
+            <input type="button" class="button" value="Démarrer un accompagnement">
+        </a>
+    </form>
+
+<h3>Licence</h3>
+<span class="oi oi-badge" aria-hidden="true"></span>
+    <div class="bgDiv">
+        <a>GPL-3.0 license</a>
+    </div>
+
+@code{
+
+    private SEtape[]? GetEtapes;
+    private int TotalPoids = 0;
+
+    protected override async Task OnInitializedAsync()
+    {
+
+        GetEtapes = await Http.GetFromJsonAsync<SEtape[]>("/Data/SIMPLE.json");
+        @foreach(SEtape E in GetEtapes)
+            @foreach(Atelier A in E.Ateliers)
+                TotalPoids += A.Poids;
+    }
+}
