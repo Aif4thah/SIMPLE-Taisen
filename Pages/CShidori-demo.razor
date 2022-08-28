@@ -1,0 +1,44 @@
+﻿@page "/CShidori-demo"
+@inject IJSRuntime JS
+@using TAISEN.Classes;
+@using CShidori.Core;
+
+
+<PageTitle>CShidori</PageTitle>
+
+
+
+<EditForm Model="@CSo" OnValidSubmit="@DownloadBinary">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <InputText id="name" @bind-Value="CSo.Name" />
+    <InputText id="input" @bind-Value="CSo.Input" />
+
+    <button type="submit">Submit</button>
+</EditForm>
+
+@code {
+
+    private CShidObj CSo = new();
+
+    //https://docs.microsoft.com/en-us/aspnet/core/blazor/forms-and-input-components?view=aspnetcore-6.0
+
+    
+    async Task DownloadBinary()
+    {
+        // Generate a file
+        byte[] file = Enumerable.Range(0, 100).Cast<byte>().ToArray();
+
+        // Send the data to JS to actually download the file
+        await JS.InvokeVoidAsync("BlazorDownloadFile", "file.bin", "application/octet-stream", file);
+    }
+
+    async Task DownloadText()
+    {
+        // Generate a text file
+        byte[] file = System.Text.Encoding.UTF8.GetBytes("Hello world!");
+        await JS.InvokeVoidAsync("BlazorDownloadFile", "file.txt", "text/plain", file);
+    }
+
+}

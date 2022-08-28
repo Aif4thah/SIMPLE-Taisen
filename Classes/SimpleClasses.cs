@@ -1,4 +1,5 @@
 ﻿using Blazored.LocalStorage;
+using System.ComponentModel.DataAnnotations;
 
 namespace TAISEN.Classes
 {
