@@ -9,7 +9,7 @@ namespace TAISEN.Classes
     public class CShidObj
     {
         [Required]
-        [StringLength(10, ErrorMessage = "Saisie trop longue")]
+        [StringLength(60, ErrorMessage = "Saisie trop longue")]
         public string? Name { get; set; }
 
         [Required]
