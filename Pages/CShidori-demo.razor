@@ -6,29 +6,30 @@
 <PageTitle>CShidori</PageTitle>
 
 
-<EditForm Model="@CSo" OnValidSubmit="@GenerateOut">
-    <DataAnnotationsValidator />
-    <ValidationSummary />
-    <p>
-        <label>Nom du point d'entrée
-        <InputText id="name" @bind-Value="CSo.Name" />
-        </label>
-    </p>
-    <p>
-        <label>Saisie attendue
-        <InputText id="input" @bind-Value="CSo.Input" />
-        </label>
-    </p>
+<div class="bgDiv">
+    <EditForm Model="@CSo" OnValidSubmit="@GenerateOut">
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+        <p>
+            <label>Nom du point d'entrée</label><br />
+            <InputText id="name" @bind-Value="CSo.Name" />
+            
+        </p>
+        <p>
+            <label>Saisie attendue</label><br />
+            <InputText id="input" @bind-Value="CSo.Input" />
+        </p>
 
-    <button type="submit">Submit</button>
-</EditForm>
+        <button type="submit">Generer</button>
+    </EditForm>
 
-<fieldset>
-     <legend>Jeux de test:</legend>
-        <form>
-            <textarea @bind=@JeuxDeTest></textarea>
-        </form>
-</fieldset>
+    <fieldset>
+         <legend>Jeux de test:</legend>
+            <form>
+                <textarea @bind=@JeuxDeTest></textarea>
+            </form>
+    </fieldset>
+</div>
 
 @code {
 

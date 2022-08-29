@@ -1,4 +1,5 @@
 ﻿@page "/simple-demo"
+@layout SimpleLayout
 @inject HttpClient Http
 @inject Blazored.LocalStorage.ILocalStorageService localStorage
 @using TAISEN.Classes;
@@ -80,20 +81,6 @@ else
 
 }
 
-<h3>Vous utilisez la méthode SIMPLE ?</h3>
-<span class="oi oi-heart" aria-hidden="true"></span>
-<div class="bgDiv">
-    <a>Le temps nécessaire pour le développement et l'amélioration continue de la méthode SIMPLE est pris sur mon temps libre. J'ai tenu à ce que ce projet soit gratuit et open-source, pour que chacun puisse l'utiliser. 
-        Si vous appréciez la plus-value qu'apporte cette méthode au quotidien, n'hésitez pas à faire un don sur ce wallet </a>
-    <a href="https://etherscan.io/address/0xcC424e30Ff6eEAb4E6B3A900c5446038F858b314">Ethereum</a>
-</div>
-
-<h3>Licence</h3>
-<span class="oi oi-badge" aria-hidden="true"></span>
-<div>
-    <a>GPL-3.0 license</a>
-</div>
-
 
 @code{
     private SEtape[]? GetEtapes;
@@ -108,9 +95,8 @@ else
                 {
                     Console.WriteLine("Atelier: {0}\nPoids: {1}", A.Nom, A.Poids.ToString());
                     @foreach (Processus P in A.Processus)
-                    {
-                        Console.WriteLine("Processu: {0}\nFin:{1}", P.Nom, P.Fin);
-                    }
+                        Console.WriteLine("Processus: {0}\nFin:{1}", P.Nom, P.Fin);
+
                 }                
             }
         }
