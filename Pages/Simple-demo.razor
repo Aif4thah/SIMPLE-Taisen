@@ -1,103 +1,123 @@
-﻿@page "/simple-demo"
+﻿@page "/simple-demo/{IEtape:int?}"
 @layout SimpleLayout
 @inject HttpClient Http
 @inject Blazored.LocalStorage.ILocalStorageService localStorage
 @using TAISEN.Classes;
 
 <PageTitle>SIMPLE</PageTitle>
-    <h1>Démonstration</h1>
-    <p><i>les sections suivantes sont en cours de développement. Elles présentent le détail de la méthode et les fonctionnalités qui lui seront prochainement associées</i></p>
+<h1>Démonstration</h1>
+<p><i>les sections suivantes sont en cours de développement. Elles présentent le détail de la méthode et les fonctionnalités qui lui seront prochainement associées</i></p>
+
 
 @if (GetEtapes == null)
 {
-        <p><em>Chargement...</em></p>
+    <p><em>Chargement...</em></p>
 }
 else
 {
-    @foreach( SEtape E in GetEtapes)
-    {
-        <h2>@E.Etape</h2>
-        <span class="oi oi-briefcase" aria-hidden="true"></span>       
-            <p>@E.Objectif</p>
-        
-        @foreach( Atelier A in E.Ateliers)
+    <form>
+        @if((IEtape % GetEtapes.Count()) != 0)
         {
-            <div class="bgDiv">
-                <h3><b>@A.Nom</b><br>@A.Description</h3>
-                <span class="oi oi-clipboard" aria-hidden="true"></span><br />
-
-                <lu>
-                    <li>Poids : @A.Poids</li>
-                    @if(@A.Prerequis != null)
-                    {
-                        <li>Prérequis : @A.Prerequis</li>
-                    }
-
-                    @if(@A.Interlocuteurs != null)
-                    {
-                        string Tous = string.Empty;
-                        bool first = true;
-                        @foreach( string I in A.Interlocuteurs){
-                            @if(first){
-                                Tous += I;
-                                first = false;
-                            }else{
-                                Tous += ", "+I;
-                            }                                
-                        }
-                        <li>Interlocuteurs: @Tous</li>
-                    }
-                </lu>
-
-                <fieldset>
-                    <legend>Processus:</legend>
-                    @foreach(Processus P in A.Processus)
-                    {
-                        <input class="CheckBox" type="checkbox" @bind=@P.Fin name=@P.Nom value=@P.Nom/>   
-                        <label for=@P.Nom>@P.Nom
-                            @if(@P.Referentiel != null)
-                            {
-                                <i> (Referentiel: @P.Referentiel.Nom)</i>
-                            }
-                        </label><br/>
-                    }
-                </fieldset>
-
-                <fieldset>
-                    <legend>Livrables:</legend>
-                    @foreach(Livrables L in A.Livrables)
-                    {
-                        <p>@L.Nom</p>
-                        <form>
-                            <textarea @bind=@L.CR></textarea>
-                        </form>
-                    }
-                    <button class="button" @onclick="Save">Sauvegarder l'atelier</button>
-                </fieldset>
-                
-            </div>
+           <a href="/simple-demo/@((IEtape-1))"><input type="button" class="button" value="< Etape précèdente"></a>
         }
+        @if((IEtape % GetEtapes.Count()) != GetEtapes.Count()-1)
+        {
+           <a href="/simple-demo/@((IEtape+1))"><input type="button" class="button" value="Etape Suivante >"></a>
+        }       
+    </form>
+
+    E = GetEtapes[ IEtape % GetEtapes.Count() ];
+    <h2>@E?.Etape</h2>
+    <span class="oi oi-briefcase" aria-hidden="true"></span>
+    <p>@E?.Objectif</p>
+
+    @foreach (Atelier A in E.Ateliers)
+    {
+        <div class="bgDiv">
+            <h3><b>@A.Nom</b><br>@A.Description</h3>
+            <span class="oi oi-clipboard" aria-hidden="true"></span><br />
+            <lu>
+                <li>Poids : @A.Poids</li>
+                @if (@A.Prerequis != null)
+                {
+                    <li>Prérequis : @A.Prerequis</li>
+                }
+
+                @if (@A.Interlocuteurs != null)
+                {
+                    string Tous = string.Empty;
+                    bool first = true;
+                    @foreach (string I in A.Interlocuteurs)
+                    {
+                        @if (first)
+                        {
+                            Tous += I;
+                            first = false;
+                        }
+                        else
+                        {
+                            Tous += ", " + I;
+                        }
+                    }
+                    <li>Interlocuteurs: @Tous</li>
+                }
+            </lu>
+
+            <fieldset>
+                <legend>Processus:</legend>
+                @foreach (Processus P in A.Processus)
+                {
+                    <input class="CheckBox" type="checkbox" @bind=@P.Fin name=@P.Nom value=@P.Nom />
+                    <label for=@P.Nom>
+                        @P.Nom
+                        @if (@P.Referentiel != null)
+                        {
+                            <i> (Referentiel: @P.Referentiel.Nom)</i>
+                        }
+                    </label>
+                    <br />
+                }
+            </fieldset>
+
+            <fieldset>
+                <legend>Livrables:</legend>
+                @foreach (Livrables L in A.Livrables)
+                {
+                    <p>@L.Nom</p>
+                    <form>
+                        <textarea @bind=@L.CR></textarea>
+                    </form>
+                }
+                <button class="button" @onclick="Save">Sauvegarder l'atelier</button>
+            </fieldset>
+
+        </div>
     }
 
 }
 
 
-@code{
+@code {
+    [Parameter]
+    public int IEtape { get; set; } = 0;
+
     private SEtape[]? GetEtapes;
+    private SEtape? E;
+
+
     protected override async Task OnInitializedAsync()
     {
         try
         {
             GetEtapes = await localStorage.GetItemAsync<SEtape[]>("SIMPLE");
-            @foreach(SEtape E in GetEtapes)
+            @foreach (SEtape E in GetEtapes)
             {
-                @foreach(Atelier A in E.Ateliers)
+                @foreach (Atelier A in E.Ateliers)
                 {
-                    Console.WriteLine("Atelier: {0}\nPoids: {1}", A.Nom, A.Poids.ToString());
+                    Console.WriteLine("Load from browser\nAtelier: {0}\nPoids: {1}", A.Nom, A.Poids.ToString());
                     @foreach (Processus P in A.Processus)
-                        Console.WriteLine("Processus: {0}\nFin:{1}", P.Nom, P.Fin);
-
-                }                
+                        Console.WriteLine("Load from browser\nProcessus: {0}\nFin: {1}", P.Nom, P.Fin);
+                }
             }
         }
         catch
@@ -110,11 +130,6 @@ else
     public async Task Save()
     {
         await localStorage.SetItemAsync("SIMPLE", GetEtapes);
-    }
-
-    public async Task Load()
-    {
-        GetEtapes = await localStorage.GetItemAsync<SEtape[]>("SIMPLE");
     }
 
 }
