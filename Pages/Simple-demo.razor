@@ -16,17 +16,17 @@
 else
 {
     <form>
-        @if((IEtape % GetEtapes.Count()) != 0)
+        @if ((IEtape % GetEtapes.Count()) != 0)
         {
-           <a href="/simple-demo/@((IEtape-1))"><input type="button" class="button" value="< Etape précèdente"></a>
+            <a href="/simple-demo/@((IEtape-1))"><input type="button" class="button" value="< Etape précèdente"></a>
         }
-        @if((IEtape % GetEtapes.Count()) != GetEtapes.Count()-1)
+        @if ((IEtape % GetEtapes.Count()) != GetEtapes.Count() - 1)
         {
-           <a href="/simple-demo/@((IEtape+1))"><input type="button" class="button" value="Etape Suivante >"></a>
-        }       
+            <a href="/simple-demo/@((IEtape+1))"><input type="button" class="button" value="Etape Suivante >"></a>
+        }
     </form>
 
-    E = GetEtapes[ IEtape % GetEtapes.Count() ];
+    E = GetEtapes[IEtape % GetEtapes.Count()];
     <h2>@E?.Etape</h2>
     <span class="oi oi-briefcase" aria-hidden="true"></span>
     <p>@E?.Objectif</p>
@@ -35,12 +35,12 @@ else
     {
         <div class="bgDiv">
             <h3><b>@A.Nom</b><br>@A.Description</h3>
-            <span class="oi oi-clipboard" aria-hidden="true"></span><br />
-            <lu>
-                <li>Poids : @A.Poids</li>
+            <span class="oi oi-clipboard" aria-hidden="true"></span><br>
+            <ul>
+                <li><b>Poids :</b> @A.Poids</li>
                 @if (@A.Prerequis != null)
                 {
-                    <li>Prérequis : @A.Prerequis</li>
+                    <li><b>Prérequis :</b> @A.Prerequis</li>
                 }
 
                 @if (@A.Interlocuteurs != null)
@@ -59,29 +59,35 @@ else
                             Tous += ", " + I;
                         }
                     }
-                    <li>Interlocuteurs: @Tous</li>
+                    <li><b>Interlocuteurs :</b> @Tous</li>
                 }
-            </lu>
+                @foreach( Processus P in A.Processus)
+                {
+                    @if (@P.Referentiel != null)
+                    {
+                        <li><b>Referentiel:</b> @P.Referentiel.Nom</li>
+                    }
+                }
+
+            </ul>
+
 
             <fieldset>
                 <legend>Processus:</legend>
+                <ul>
                 @foreach (Processus P in A.Processus)
                 {
-                    <input class="CheckBox" type="checkbox" @bind=@P.Fin name=@P.Nom value=@P.Nom />
-                    <label for=@P.Nom>
-                        @P.Nom
-                        @if (@P.Referentiel != null)
-                        {
-                            <i> (Referentiel: @P.Referentiel.Nom)</i>
-                        }
-                    </label>
-                    <br />
+                    <li>
+                        <input class="CheckBox" type="checkbox" @bind=@P.Fin name=@P.Nom value=@P.Nom />  
+                        <label for=@P.Nom>@P.Nom</label>                               
+                    </li>
                 }
+                </ul>
             </fieldset>
 
             <fieldset>
                 <legend>Livrables:</legend>
-                @foreach (Livrables L in A.Livrables)
+                @foreach (Livrable L in A.Livrables)
                 {
                     <p>@L.Nom</p>
                     <form>

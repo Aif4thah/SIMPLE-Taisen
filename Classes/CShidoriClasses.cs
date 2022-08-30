@@ -13,7 +13,7 @@ namespace TAISEN.Classes
         public string? Name { get; set; }
 
         [Required]
-        [StringLength(4096, ErrorMessage = "Saisie trop longue")]
+        [StringLength(4096, ErrorMessage = "Saisie trop longue - utilisez CShidori en ligne de commandes")]
         public string? Input { get; set; }
     }
 

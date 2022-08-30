@@ -13,8 +13,7 @@
         <ValidationSummary />
         <p>
             <label>Nom du point d'entrée</label><br />
-            <InputText id="name" @bind-Value="CSo.Name" />
-            
+            <InputText id="name" @bind-Value="CSo.Name" />            
         </p>
         <p>
             <label>Saisie attendue</label><br />
@@ -41,7 +40,7 @@
 
     private void GenerateOut()
     {
-         new MutDispatcher(CSo.Input.Length, CSo.Input).Output.ForEach(x => JeuxDeTest+= x + "\n");
+         new MutDispatcher(CSo.Input.Length*BadStrings.Output.Count(), CSo.Input).Output.ForEach(x => JeuxDeTest+= x + "\n");
     }
 
 

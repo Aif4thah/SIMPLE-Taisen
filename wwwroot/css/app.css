@@ -25,10 +25,17 @@ p {
     margin-inline-end: 10%;
 }
 
-ul, li {
+ul {
+    display: inline-block;
+    margin: auto;
+    text-align: left;
+    list-style-type: none;
+}
+
+li {
     text-align: left !important;
     list-style-position: inside;
-    margin-left: 5%;
+    margin: auto;
 }
 
 .sh1 {
@@ -196,7 +203,7 @@ img {
 }
 
 .imgSmall {
-    width: 30%;
+    width: 120px;
     height: auto;
 }
 
@@ -225,3 +232,31 @@ textarea {
 legend{
     margin-top: 12px;
 }
+
+
+/*input[type=checkbox] + label::before,input[type=checkbox] + label::after {
+        content: '';
+        position: absolute;
+        display: inline-block;
+    }*/
+
+/*input[type=checkbox] + label::before {
+        left: 0.5rem;
+        top: 0.15rem;
+        width: 0.9rem;
+        height: 0.9rem;
+        border: 0.05rem solid black;
+        background: white;
+}*/
+
+/*input[type=checkbox]:checked + label::after {
+        left: 0.6rem;
+        top: 0.28rem;
+        height: 0.8rem;
+        border-left: 0.8rem solid black;
+}
+*/
+/*input[type=checkbox]:focus + label::before {
+        outline: 0.05rem dotted;
+}
+*/

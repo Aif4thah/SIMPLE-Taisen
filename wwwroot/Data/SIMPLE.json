@@ -50,7 +50,7 @@
         "Nom": "I1",
         "Description":"Identification des fonctions sensibles",
         "Prerequis": "S1",
-        "Poids": 3,
+        "Poids": 2,
         "Processus": [
           {
             "Nom": "Établir la liste de fonctions sensibles",

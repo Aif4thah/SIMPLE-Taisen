@@ -12,7 +12,7 @@
 
 <h2>Périmètre</h2>
 <span class="oi oi-crop" aria-hidden="true"></span>
-<div class="bgDiv"> 
+<div class="bgDiv">
     <p>Le champ de cette méthodologie cible les projets applicatifs ainsi que l'infrastructure sur laquelle ils reposent, ce qui inclut:</p>
     <ul>
         <li>toute application métier, qu'il s'agisse d'un environnement  Web, industriel, IoT, cloud, hybride, etc.</li>
@@ -23,26 +23,31 @@
 
 @if (GetEtapes == null)
 {
-        <p><em>Chargement...</em></p>
+    <p><em>Chargement...</em></p>
 }
 else
 {
 
-     
+
     <h2>Référentiels</h2>
-    <span class="oi oi-compass" aria-hidden="true"></span><br />
-    <div class="bgDiv"> 
-    @foreach(SEtape E in GetEtapes){
-        @foreach(Atelier A in E.Ateliers){
-            TotalPoids += A.Poids;
-            @foreach(Processus P in A.Processus)
+    <span class="oi oi-compass" aria-hidden="true"></span>
+    <br />
+    <div class="bgDiv">
+        @foreach (SEtape E in GetEtapes)
+        {
+            @foreach (Atelier A in E.Ateliers)
             {
-                @if(P.Referentiel != null){
-                    <a href="@P.Referentiel.Uri">@P.Referentiel.Nom</a><br />
+                TotalPoids += A.Poids;
+                @foreach (Processus P in A.Processus)
+                {
+                    @if (P.Referentiel != null)
+                    {
+                        <a href="@P.Referentiel.Uri">@P.Referentiel.Nom</a>
+                        <br />
+                    }
                 }
             }
         }
-    }
     </div>
 
 
@@ -50,10 +55,10 @@ else
     <span class="oi oi-key" aria-hidden="true"></span>
     <div class="bgDiv">
         <ul>
-        @foreach( SEtape E in GetEtapes)
-        {
-            <li><b>@E.Etape.FirstOrDefault()</b> :  @E.Etape</li>
-        }
+            @foreach (SEtape E in GetEtapes)
+            {
+                <li><b>@E.Etape.FirstOrDefault()</b> :  @E.Etape</li>
+            }
         </ul>
     </div>
 
@@ -69,8 +74,8 @@ else
                 </tr>
             </thead>
             <tbody>
-                @foreach( SEtape E in GetEtapes)
-                    @foreach( Atelier A in E.Ateliers)
+                @foreach (SEtape E in GetEtapes)
+                    @foreach (Atelier A in E.Ateliers)
                     {
                         <tr>
                             <td>@A.Nom</td>
@@ -90,7 +95,7 @@ else
     </a>
 </form>
 
-@code{
+@code {
     private SEtape[]? GetEtapes;
     private int TotalPoids = 0;
     protected override async Task OnInitializedAsync()

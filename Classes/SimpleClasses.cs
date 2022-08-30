@@ -19,7 +19,7 @@ namespace TAISEN.Classes
         public List<string>? Interlocuteurs {get; set;}
         public int Poids { get; set; }
         public IEnumerable<Processus> Processus { get; set; }
-        public IEnumerable<Livrables> Livrables { get; set; }
+        public IEnumerable<Livrable> Livrables { get; set; }
     }
 
     public class Processus
@@ -29,7 +29,7 @@ namespace TAISEN.Classes
         public bool Fin { get; set; }
     }
 
-    public class Livrables
+    public class Livrable
     {
         public string Nom { get; set; }
         public string? CR { get; set; }
@@ -38,7 +38,13 @@ namespace TAISEN.Classes
     public class Referentiel
     {
         public string Nom {get; set;}
-        public string Uri {get;set;}
+        public string? Uri {get;set;}
+    }
+
+    public class Outil
+    {
+        public string Nom { get; set; }
+        public string? Uri { get; set; }
     }
 
 
