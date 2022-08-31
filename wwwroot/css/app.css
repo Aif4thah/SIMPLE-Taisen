@@ -233,30 +233,6 @@ legend{
     margin-top: 12px;
 }
 
-
-/*input[type=checkbox] + label::before,input[type=checkbox] + label::after {
-        content: '';
-        position: absolute;
-        display: inline-block;
-    }*/
-
-/*input[type=checkbox] + label::before {
-        left: 0.5rem;
-        top: 0.15rem;
-        width: 0.9rem;
-        height: 0.9rem;
-        border: 0.05rem solid black;
-        background: white;
-}*/
-
-/*input[type=checkbox]:checked + label::after {
-        left: 0.6rem;
-        top: 0.28rem;
-        height: 0.8rem;
-        border-left: 0.8rem solid black;
+label{
+    display: inline;
 }
-*/
-/*input[type=checkbox]:focus + label::before {
-        outline: 0.05rem dotted;
-}
-*/

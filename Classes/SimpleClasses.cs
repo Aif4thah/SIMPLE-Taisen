@@ -19,14 +19,16 @@ namespace TAISEN.Classes
         public List<string>? Interlocuteurs {get; set;}
         public int Poids { get; set; }
         public IEnumerable<Processus> Processus { get; set; }
-        public IEnumerable<Livrable> Livrables { get; set; }
+        
     }
 
     public class Processus
     {
         public string Nom { get; set; }
         public Referentiel? Referentiel { get; set; }
+        public IEnumerable<Livrable>? Livrables { get; set; }
         public bool Fin { get; set; }
+
     }
 
     public class Livrable

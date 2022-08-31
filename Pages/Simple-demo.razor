@@ -6,7 +6,8 @@
 
 <PageTitle>SIMPLE</PageTitle>
 <h1>Démonstration</h1>
-<p><i>les sections suivantes sont en cours de développement. Elles présentent le détail de la méthode et les fonctionnalités qui lui seront prochainement associées</i></p>
+<p><i>les sections suivantes sont en cours de développement. Elles présentent le détail de la méthode et les
+        fonctionnalités qui lui seront prochainement associées</i></p>
 
 
 @if (GetEtapes == null)
@@ -15,18 +16,8 @@
 }
 else
 {
-    <form>
-        @if ((IEtape % GetEtapes.Count()) != 0)
-        {
-            <a href="/simple-demo/@((IEtape-1))"><input type="button" class="button" value="< Etape précèdente"></a>
-        }
-        @if ((IEtape % GetEtapes.Count()) != GetEtapes.Count() - 1)
-        {
-            <a href="/simple-demo/@((IEtape+1))"><input type="button" class="button" value="Etape Suivante >"></a>
-        }
-    </form>
-
     E = GetEtapes[IEtape % GetEtapes.Count()];
+
     <h2>@E?.Etape</h2>
     <span class="oi oi-briefcase" aria-hidden="true"></span>
     <p>@E?.Objectif</p>
@@ -38,6 +29,7 @@ else
             <span class="oi oi-clipboard" aria-hidden="true"></span><br>
             <ul>
                 <li><b>Poids :</b> @A.Poids</li>
+                <li><b>Nombre de Processus :</b> @A.Processus.Count()</li>
                 @if (@A.Prerequis != null)
                 {
                     <li><b>Prérequis :</b> @A.Prerequis</li>
@@ -61,44 +53,54 @@ else
                     }
                     <li><b>Interlocuteurs :</b> @Tous</li>
                 }
-                @foreach( Processus P in A.Processus)
+
+                @foreach (Processus P in A.Processus)
                 {
                     @if (@P.Referentiel != null)
                     {
-                        <li><b>Referentiel:</b> @P.Referentiel.Nom</li>
+                        <li><b>Referentiel :</b> @P.Referentiel.Nom</li>
                     }
                 }
-
             </ul>
 
 
             <fieldset>
-                <legend>Processus:</legend>
-                <ul>
                 @foreach (Processus P in A.Processus)
                 {
-                    <li>
-                        <input class="CheckBox" type="checkbox" @bind=@P.Fin name=@P.Nom value=@P.Nom />  
-                        <label for=@P.Nom>@P.Nom</label>                               
-                    </li>
-                }
-                </ul>
-            </fieldset>
+                    <legend>@P.Nom</legend>
 
-            <fieldset>
-                <legend>Livrables:</legend>
-                @foreach (Livrable L in A.Livrables)
-                {
-                    <p>@L.Nom</p>
-                    <form>
-                        <textarea @bind=@L.CR></textarea>
-                    </form>
+
+                    @foreach (Livrable L in P.Livrables)
+                    {
+                        <a>@L.Nom :</a>
+                        <form>
+                            <textarea @bind=@L.CR></textarea>
+                        </form>
+                    }
+
+                    <ul>
+                        <li>
+                            <input class="CheckBox" type="checkbox" @bind=@P.Fin name=@P.Nom value=@P.Nom />
+                            <label for=@P.Nom>Réalisé</label>
+                        </li>
+                    </ul>
+                    <br>
                 }
-                <button class="button" @onclick="Save">Sauvegarder l'atelier</button>
             </fieldset>
 
         </div>
     }
+    <form>
+        @if ((IEtape % GetEtapes.Count()) != 0)
+        {
+            <a href="/simple-demo/@((IEtape-1))"><input type="button" class="button" value="< Etape précèdente"></a>
+        }
+        <button class="button" @onclick="Save">Sauvegarder l'atelier</button>
+        @if ((IEtape % GetEtapes.Count()) != GetEtapes.Count() - 1)
+        {
+            <a href="/simple-demo/@((IEtape+1))"><input type="button" class="button" value="Etape Suivante >"></a>
+        }
+    </form>
 
 }
 
@@ -106,10 +108,8 @@ else
 @code {
     [Parameter]
     public int IEtape { get; set; } = 0;
-
     private SEtape[]? GetEtapes;
     private SEtape? E;
-
 
     protected override async Task OnInitializedAsync()
     {

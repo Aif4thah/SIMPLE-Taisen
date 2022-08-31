@@ -4,94 +4,101 @@
     "Objectif": "L'objectif de cette étape est de prendre connaissance du contexte lié à l'application. Afin de faire progresser efficacement le niveau de sécurité, nous nous concentrons sur la vision du métier. Les éléments importants pour le métier seront les éléments à sécuriser en priorité.",
     "Ateliers": [
       {
-        "Nom": "S1" ,
+        "Nom": "S1",
         "Description": "Présentation du projet par les équipes de développement",
         "Prerequis": null,
-        "Poids":  1,
-        "Interlocuteurs": 
-        [ 
-          "Équipe de développement" 
+        "Poids": 1,
+        "Interlocuteurs": [
+          "Équipe de développement"
         ],
         "Processus": [
           {
             "Nom": "Présentation des fonctions métier",
-            "Fin": true
+            "Fin": true,
+            "Livrables": [
+              {
+                "Nom": "Compte rendu de la présentation des fonctions métier"
+              }
+            ]
           },
           {
             "Nom": "Mise à disposition de la documentation du projet",
-            "Fin": false
+            "Fin": false,
+            "Livrables": [
+              {
+                "Nom": "Liste des documents réceptionnés"
+              }
+            ]
           },
           {
             "Nom": "Accès au code source et/ou à l'application",
-            "Fin": false
+            "Fin": false,
+            "Livrables": [
+              {
+                "Nom": "URL"
+              }
+            ]
           },
           {
             "Nom": "Accès aux résultats des précédentes recettes et rapports des tests d’intrusion",
-            "Fin": false
+            "Fin": false,
+            "Livrables": [
+              {
+                "Nom": "Liste des documents réceptionnés"
+              }
+            ]
           }
-        ],
-        "Livrables": [
-          {
-            "Nom": "Compte rendu de la présentation des fonctions métier"
-          },
-          { "Nom": "Accusé de réception des documents transmis" },
-
-          { "Nom": "Confirmation que les accès transmis sont fonctionnels" }
         ]
-      }     
+      }
     ]
   },
   {
     "Etape": "Identifier les fonctions sensibles",
     "Objectif": "Établir et valider la liste exhaustive des fonctions qui feront l'objet d'une sécurisation. Les Ateliers I1 et I2 peuvent donner lieu à plusieurs itérations.",
-    "Ateliers": 
-    [
+    "Ateliers": [
       {
         "Nom": "I1",
-        "Description":"Identification des fonctions sensibles",
+        "Description": "Identification des fonctions sensibles",
         "Prerequis": "S1",
         "Poids": 2,
         "Processus": [
           {
             "Nom": "Établir la liste de fonctions sensibles",
-            "Referentiel": 
-            {
-              "Nom": "Microsoft : STRIDE Threat Modeling Tool", 
+            "Referentiel": {
+              "Nom": "Microsoft : STRIDE Threat Modeling Tool",
               "Uri": "https://docs.microsoft.com/en-us/azure/security/develop/threat-modeling-tool-threats"
             },
-            "Fin": false
+            "Fin": false,
+            "Livrables": [
+              {
+                "Nom": "Proposition d'une liste exhaustive des fonctions sensibles du point de vue du métier et leurs enjeux pour la sécurité"
+              }
+            ]
           }
-        ],
-        "Livrables": 
-        [
-          { "Nom": "Proposition d'une liste exhaustive des fonctions sensibles du point de vue du métier et leurs enjeux pour la sécurité" }
         ]
       },
       {
         "Nom": "I2",
-        "Description":"Validation de la liste des fonctions sensibles",
+        "Description": "Validation de la liste des fonctions sensibles",
         "Prerequis": "I1",
         "Poids": 1,
-        "Interlocuteurs": 
-        [ 
-          "Équipe de développement", "Metier"
+        "Interlocuteurs": [
+          "Équipe de développement",
+          "Metier"
         ],
-        "Processus": 
-        [
+        "Processus": [
           {
             "Nom": "Les interlocuteurs challengent et valident le travail.",
-            "Referentiel":
-            {
-              "Nom":"ANSSI: Sécurité & Agilité numériques",
-              "Uri":"https://www.ssi.gouv.fr/uploads/2018/11/guide-securite-numerique-agile-anssi-pa-v1.pdf"
+            "Referentiel": {
+              "Nom": "ANSSI: Sécurité & Agilité numériques",
+              "Uri": "https://www.ssi.gouv.fr/uploads/2018/11/guide-securite-numerique-agile-anssi-pa-v1.pdf"
             },
-            "Fin": false
-          }
-        ],
-        "Livrables": 
-        [
-          {
-            "Nom": "La liste définitive des fonctions métier à sécuriser"
+            "Fin": false,
+            "Livrables": [
+              {
+                "Nom": "La liste définitive des fonctions métier à sécuriser"
+              }
+            ]
           }
         ]
       }
@@ -106,21 +113,21 @@
         "Description": "Recueil des objectifs de sécurité de l’organisation",
         "Prerequis": "I",
         "Poids": 1,
-        "Interlocuteurs": 
-        [ 
+        "Interlocuteurs": [
           "Responsable sécurité"
         ],
         "Processus": [
           {
             "Nom": "Recueil les objectifs de sécurité du projet : Règlementation, normes, objectifs PSSI",
-            "Fin": false
-          }
-        ],
-        "Livrables": [
-          {
-            "Nom": "Accusé de réception : Liste des documents reçus"
+            "Fin": false,
+            "Livrables": [
+              {
+                "Nom": "Accusé de réception : Liste des documents reçus"
+              }
+            ]
           }
         ]
+
       }
     ]
   },
@@ -136,17 +143,16 @@
         "Processus": [
           {
             "Nom": "Élaborer la liste des mesures techniques permettant d'atteindre les objectifs de sécurité",
-            "Referentiel": 
-            {
-              "Nom": "OWASP: Application Security Vérification Standard", 
-              "Uri": "https://owasp.org/www-project-application-security-verification-standard/" 
+            "Referentiel": {
+              "Nom": "OWASP: Application Security Vérification Standard",
+              "Uri": "https://owasp.org/www-project-application-security-verification-standard/"
             },
-            "Fin": false
-          }
-        ],
-        "Livrables": [
-          {
-            "Nom": "Proposition d'une liste de mesure de sécurité à implémenter par le projet." 
+            "Fin": false,
+            "Livrables": [
+              {
+                "Nom": "Proposition d'une liste de mesure de sécurité à implémenter par le projet."
+              }
+            ]
           }
         ]
       },
@@ -154,21 +160,21 @@
         "Nom": "P2",
         "Description": "Validation des mesures de sécurité",
         "Prerequis": "P1",
-        "Poids":  1,
-        "Interlocuteurs": 
-        [ 
-          "Équipe de développement", "Équipe sécurité ou RSSI"
+        "Poids": 1,
+        "Interlocuteurs": [
+          "Équipe de développement",
+          "Équipe sécurité ou RSSI"
         ],
-        "Processus": 
-        [        
+        "Processus": [
           {
             "Nom": "Challenge ou validation des mesures par le projet et par la sécurité",
-            "Fin": false
+            "Fin": false,
+            "Livrables": [
+              {
+                "Nom": "Liste définitive des mesures de sécurité à implémenter par le projet"
+              }
+            ]
           }
-        ],
-        "Livrables": 
-        [
-          { "Nom": "Liste définitive des mesures de sécurité à implémenter par le projet" } 
         ]
       }
     ]
@@ -182,41 +188,39 @@
         "Description": "Accompagnement pour l’implémentation des mesures de sécurité",
         "Prerequis": "P",
         "Poids": 5,
-        "Interlocuteurs": 
-        [ 
-          "Équipe de développement" 
+        "Interlocuteurs": [
+          "Équipe de développement"
         ],
         "Processus": [
           {
             "Nom": "Apporter une expertise technique quant aux difficultés rencontrées lors de l'implémentation",
-            "Fin": false
+            "Fin": false,
+            "Livrables": [
+              {
+                "Nom": "Compte rendu d'atelier"
+              }
+            ]
           }
-        ],
-        "Livrables": [
-          {
-            "Nom": "Compte rendu d'atelier"
-          } 
         ]
       },
       {
         "Nom": "L2",
         "Description": "Accompagnement à l’élaboration de jeux de tests",
         "Prerequis": "L1",
-        "Poids":  5,
-        "Interlocuteurs": 
-        [ 
-          "Équipe de développement" 
+        "Poids": 5,
+        "Interlocuteurs": [
+          "Équipe de développement"
         ],
         "Processus": [
           {
             "Nom": "En liaison étroite avec le projet, élaboration de jeux de tests adaptés parmi les possibilités suivantes : Tests unitaires, SAST, DAST, IAST",
-            "Fin": false
+            "Fin": false,
+            "Livrables": [
+              {
+                "Nom": "Compte rendu d'atelier"
+              }
+            ]
           }
-        ],
-        "Livrables": [
-          {
-            "Nom": "Compte rendu d'atelier"
-          } 
         ]
       }
     ]
@@ -229,16 +233,16 @@
         "Nom": "E1",
         "Description": "Test de l’application",
         "Prerequis": "L",
-        "Poids":  6,
+        "Poids": 6,
         "Processus": [
           {
             "Nom": "Réalisation d’une recette de sécurité vérifiant chaque mesure de sécurité",
-            "Fin": false
-          }
-        ],
-        "Livrables": [
-          {
-            "Nom": "PV de recette"
+            "Fin": false,
+            "Livrables": [
+              {
+                "Nom": "PV de recette"
+              }
+            ]
           }
         ]
       },
@@ -246,31 +250,31 @@
         "Nom": "E2",
         "Description": "Livraison",
         "Prerequis": "E1",
-        "Poids":  2,
-        "Interlocuteurs": 
-        [ 
-          "Commanditaire" 
+        "Poids": 2,
+        "Interlocuteurs": [
+          "Commanditaire"
         ],
         "Processus": [
           {
             "Nom": "Envoi d'un PV de Livraison",
-            "Fin": false
+            "Fin": false,
+            "Livrables": [
+              {
+                "Nom": "Date de signature du PV de livraison"
+              }
+            ]
           },
           {
             "Nom": "Après signature du PV de livraison: suppression des données de la prestation (à l'exception du PV)",
-            "Fin": false
-          }
-        ],
-        "Livrables": [
-          {
-            "Nom": "éventuelles recommandations supplémentaires permettant de poursuivre la sécurisation du projet"
-          },
-          {
-            "Nom": "PV de livraison"
+            "Fin": false,
+            "Livrables": [
+              {
+                "Nom": "Date de suppression"
+              }
+            ]
           }
         ]
       }
     ]
   }
-
 ]
