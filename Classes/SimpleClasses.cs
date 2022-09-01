@@ -26,6 +26,7 @@ namespace TAISEN.Classes
     {
         public string Nom { get; set; }
         public Referentiel? Referentiel { get; set; }
+        public IEnumerable<Outil>? Outils {get;set;}
         public IEnumerable<Livrable>? Livrables { get; set; }
         public bool Fin { get; set; }
 
@@ -34,7 +35,7 @@ namespace TAISEN.Classes
     public class Livrable
     {
         public string Nom { get; set; }
-        public string? CR { get; set; }
+        public CompteRendu? CR { get; set; }
     }
 
     public class Referentiel
@@ -47,6 +48,15 @@ namespace TAISEN.Classes
     {
         public string Nom { get; set; }
         public string? Uri { get; set; }
+    }
+
+    public class CompteRendu{
+        public string? Texte {get;set;}
+        public List<El>? Els {get; set;}
+    }
+
+    public class El{
+        public string? Texte {get;set;}
     }
 
 

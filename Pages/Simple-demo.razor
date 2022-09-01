@@ -53,14 +53,6 @@ else
                     }
                     <li><b>Interlocuteurs :</b> @Tous</li>
                 }
-
-                @foreach (Processus P in A.Processus)
-                {
-                    @if (@P.Referentiel != null)
-                    {
-                        <li><b>Referentiel :</b> @P.Referentiel.Nom</li>
-                    }
-                }
             </ul>
 
 
@@ -73,12 +65,38 @@ else
                     @foreach (Livrable L in P.Livrables)
                     {
                         <a>@L.Nom :</a>
-                        <form>
-                            <textarea @bind=@L.CR></textarea>
-                        </form>
+                        @if (@L.CR.Texte != null)
+                        {
+                            <form>
+                                <textarea class="TextBig" @bind=@L.CR.Texte></textarea>
+                            </form>
+                        }
+                        else if (@L.CR.Els?.Count != 0)
+                        {
+                            @if (@L.CR.Els.LastOrDefault().Texte != "Nouvel Élément")
+                            {
+                                NewEl.Texte = "Nouvel Élément";
+                                L.CR.Els.Add(NewEl);
+                            }
+
+                            <form>
+                                <EditForm Model=@L.CR.Els>
+                                    @foreach (El el in L.CR.Els)
+                                    {
+                                        <InputText @bind-Value=@el.Texte /><br>
+                                    }                                   
+                                </EditForm>
+                                <button class="button" @onclick=Save>Ajouter</button>
+                            </form>
+
+                        }
                     }
 
                     <ul>
+                        @if (@P.Referentiel != null)
+                        {
+                            <li><b>Referentiel :</b> @P.Referentiel.Nom</li>
+                        }
                         <li>
                             <input class="CheckBox" type="checkbox" @bind=@P.Fin name=@P.Nom value=@P.Nom />
                             <label for=@P.Nom>Réalisé</label>
@@ -93,9 +111,9 @@ else
     <form>
         @if ((IEtape % GetEtapes.Count()) != 0)
         {
-            <a href="/simple-demo/@((IEtape-1))"><input type="button" class="button" value="< Etape précèdente"></a>
+            <a href="/simple-demo/@((IEtape-1))"><input type="button" class="button" value="< Etape précédente"></a>
         }
-        <button class="button" @onclick="Save">Sauvegarder l'atelier</button>
+        <button class="button" @onclick=Save>Sauvegarder</button>
         @if ((IEtape % GetEtapes.Count()) != GetEtapes.Count() - 1)
         {
             <a href="/simple-demo/@((IEtape+1))"><input type="button" class="button" value="Etape Suivante >"></a>
@@ -108,8 +126,11 @@ else
 @code {
     [Parameter]
     public int IEtape { get; set; } = 0;
+
+    private El NewEl = new El();
     private SEtape[]? GetEtapes;
     private SEtape? E;
+
 
     protected override async Task OnInitializedAsync()
     {
@@ -130,12 +151,16 @@ else
         {
             GetEtapes = await Http.GetFromJsonAsync<SEtape[]>("/Data/SIMPLE.json");
         }
-
     }
 
     public async Task Save()
     {
         await localStorage.SetItemAsync("SIMPLE", GetEtapes);
+    }
+
+    private void AddListEls()
+    {
+        NewEl.Texte = "Nouvel Élément";
     }
 
 }

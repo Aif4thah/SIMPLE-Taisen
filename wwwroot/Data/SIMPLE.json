@@ -17,7 +17,10 @@
             "Fin": true,
             "Livrables": [
               {
-                "Nom": "Compte rendu de la présentation des fonctions métier"
+                "Nom": "Compte rendu de la présentation des fonctions métier",
+                "CR": {
+                  "Texte": "..."
+                }
               }
             ]
           },
@@ -26,7 +29,11 @@
             "Fin": false,
             "Livrables": [
               {
-                "Nom": "Liste des documents réceptionnés"
+                "Nom": "Liste des documents réceptionnés",
+                "CR": {
+                  "Els": [ {"Texte": "Element1"}, {"Texte": "Element2"}]
+                  
+                }
               }
             ]
           },
@@ -35,7 +42,10 @@
             "Fin": false,
             "Livrables": [
               {
-                "Nom": "URL"
+                "Nom": "URL",
+                "CR": {
+                  "Texte": "..."
+                }
               }
             ]
           },
@@ -44,7 +54,10 @@
             "Fin": false,
             "Livrables": [
               {
-                "Nom": "Liste des documents réceptionnés"
+                "Nom": "Liste des documents réceptionnés",
+                "CR": {
+                  "Els": [ {"Texte": "Element1"}, {"Texte": "Element2"}]
+                }
               }
             ]
           }
@@ -71,7 +84,10 @@
             "Fin": false,
             "Livrables": [
               {
-                "Nom": "Proposition d'une liste exhaustive des fonctions sensibles du point de vue du métier et leurs enjeux pour la sécurité"
+                "Nom": "Proposition d'une liste exhaustive des fonctions sensibles du point de vue du métier et leurs enjeux pour la sécurité",
+                "CR": {
+                  "Els": [ {"Texte": "Element1"}, {"Texte": "Element2"}]
+                }
               }
             ]
           }
@@ -96,7 +112,10 @@
             "Fin": false,
             "Livrables": [
               {
-                "Nom": "La liste définitive des fonctions métier à sécuriser"
+                "Nom": "La liste définitive des fonctions métier à sécuriser",
+                "CR": {
+                  "Els": [ {"Texte": "Element1"}, {"Texte": "Element2"}]
+                }
               }
             ]
           }
@@ -122,12 +141,15 @@
             "Fin": false,
             "Livrables": [
               {
-                "Nom": "Accusé de réception : Liste des documents reçus"
+                "Nom": "Accusé de réception : Liste des documents reçus",
+                "CR": {
+                  "Els": [ {"Texte": "Element1"}, {"Texte": "Element2"}]
+
+                }
               }
             ]
           }
         ]
-
       }
     ]
   },
@@ -150,7 +172,11 @@
             "Fin": false,
             "Livrables": [
               {
-                "Nom": "Proposition d'une liste de mesure de sécurité à implémenter par le projet."
+                "Nom": "Proposition d'une liste de mesure de sécurité à implémenter par le projet.",
+                "CR": {
+                  "Els": [ {"Texte": "Element1"}, {"Texte": "Element2"}]
+
+                }
               }
             ]
           }
@@ -171,7 +197,10 @@
             "Fin": false,
             "Livrables": [
               {
-                "Nom": "Liste définitive des mesures de sécurité à implémenter par le projet"
+                "Nom": "Liste définitive des mesures de sécurité à implémenter par le projet",
+                "CR": {
+                  "Els": [ {"Texte": "Element1"}, {"Texte": "Element2"}]
+                }
               }
             ]
           }
@@ -197,7 +226,10 @@
             "Fin": false,
             "Livrables": [
               {
-                "Nom": "Compte rendu d'atelier"
+                "Nom": "Compte rendu d'atelier",
+                "CR": {
+                  "Texte": "..."
+                }
               }
             ]
           }
@@ -215,9 +247,18 @@
           {
             "Nom": "En liaison étroite avec le projet, élaboration de jeux de tests adaptés parmi les possibilités suivantes : Tests unitaires, SAST, DAST, IAST",
             "Fin": false,
+            "Outils": [
+              {
+                "Nom": "CShidori",
+                "Uri": "https://github.com/Aif4thah/CShidori"
+              }
+            ],
             "Livrables": [
               {
-                "Nom": "Compte rendu d'atelier"
+                "Nom": "Compte rendu d'atelier",
+                "CR": {
+                  "Texte": "..."
+                }
               }
             ]
           }
@@ -240,7 +281,10 @@
             "Fin": false,
             "Livrables": [
               {
-                "Nom": "PV de recette"
+                "Nom": "PV de recette",
+                "CR": {
+                  "Texte": "..."
+                }
               }
             ]
           }
@@ -260,7 +304,10 @@
             "Fin": false,
             "Livrables": [
               {
-                "Nom": "Date de signature du PV de livraison"
+                "Nom": "Date de signature du PV de livraison",
+                "CR": {
+                  "Texte": "..."
+                }
               }
             ]
           },
@@ -269,7 +316,10 @@
             "Fin": false,
             "Livrables": [
               {
-                "Nom": "Date de suppression"
+                "Nom": "Date d'effacement sécurisé des données",
+                "CR": {
+                  "Texte": "..."
+                }
               }
             ]
           }

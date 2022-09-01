@@ -36,8 +36,6 @@
     string JeuxDeTest = string.Empty;
     private CShidObj CSo = new();
 
-    //https://docs.microsoft.com/en-us/aspnet/core/blazor/forms-and-input-components?view=aspnetcore-6.0
-
     private void GenerateOut()
     {
          new MutDispatcher(CSo.Input.Length*BadStrings.Output.Count(), CSo.Input).Output.ForEach(x => JeuxDeTest+= x + "\n");
