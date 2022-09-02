@@ -17,46 +17,59 @@ else
     <h1>@E?.Etape</h1>
     <span class="oi oi-briefcase" aria-hidden="true"></span>
     <p class="sh1">@E?.Objectif</p>
-    
+
 
     @foreach (Atelier A in E.Ateliers)
     {
         <div class="bgDiv">
             <h3><b>@A.Nom</b><br>@A.Description</h3>
             <span class="oi oi-clipboard" aria-hidden="true"></span><br>
-            <ul>
-                <li><b>Poids :</b> @A.Poids</li>
-                <li><b>Nombre de Processus :</b> @A.Processus.Count()</li>
-                @if (@A.Prerequis != null)
-                {
-                    <li><b>Prérequis :</b> @A.Prerequis</li>
-                }
-
-                @if (@A.Interlocuteurs != null)
-                {
-                    string Tous = string.Empty;
-                    bool first = true;
-                    @foreach (string I in A.Interlocuteurs)
+            <div>
+                <ul>
+                    <li><b>Poids :</b> @A.Poids</li>
+                    <li><b>Nombre de Processus :</b> @A.Processus.Count()</li>
+                    @if (@A.Prerequis != null)
                     {
-                        @if (first)
-                        {
-                            Tous += I;
-                            first = false;
-                        }
-                        else
-                        {
-                            Tous += ", " + I;
-                        }
+                        <li><b>Prérequis :</b> @A.Prerequis</li>
                     }
-                    <li><b>Interlocuteurs :</b> @Tous</li>
-                }
-            </ul>
+
+                    @if (@A.Interlocuteurs != null)
+                    {
+                        string Tous = string.Empty;
+                        bool first = true;
+                        @foreach (string I in A.Interlocuteurs)
+                        {
+                            @if (first)
+                            {
+                                Tous += I;
+                                first = false;
+                            }
+                            else
+                            {
+                                Tous += ", " + I;
+                            }
+                        }
+                        <li><b>Interlocuteurs :</b> @Tous</li>
+                    }
+                </ul>
+            </div>
 
 
             <fieldset>
                 @foreach (Processus P in A.Processus)
                 {
                     <legend>@P.Nom</legend>
+
+                    @if (@P.Referentiel != null)
+                    {
+                        <div>
+                            <ul>
+                                <li><b>Referentiel :</b> @P.Referentiel.Nom</li>
+                            </ul>
+                        </div>
+                        <br>
+                    }
+
 
 
                     @foreach (Livrable L in P.Livrables)
@@ -81,7 +94,7 @@ else
                                     @foreach (El el in L.CR.Els)
                                     {
                                         <InputText @bind-Value=@el.Texte /><br>
-                                    }                                   
+                                    }
                                 </EditForm>
                                 <button class="button" @onclick=Save>Ajouter</button>
                             </form>
@@ -90,10 +103,6 @@ else
                     }
 
                     <ul>
-                        @if (@P.Referentiel != null)
-                        {
-                            <li><b>Referentiel :</b> @P.Referentiel.Nom</li><br>
-                        }
                         <li>
                             <input class="CheckBox" type="checkbox" @bind=@P.Fin name=@P.Nom value=@P.Nom />
                             <label for=@P.Nom>Réalisé</label>
@@ -132,11 +141,11 @@ else
 
     protected override async Task OnInitializedAsync()
     {
-        
+
         try
         {
             GetEtapes = await localStorage.GetItemAsync<SEtape[]>("SIMPLE");
-            
+
             @foreach (SEtape E in GetEtapes)
             {
                 @foreach (Atelier A in E.Ateliers)
@@ -159,7 +168,8 @@ else
         await localStorage.SetItemAsync("SIMPLE", GetEtapes);
     }
 
-    public async Task Clear(){
+    public async Task Clear()
+    {
         await localStorage.ClearAsync();
     }
 
