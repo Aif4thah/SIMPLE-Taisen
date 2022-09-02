@@ -5,22 +5,19 @@
 @using TAISEN.Classes;
 
 <PageTitle>SIMPLE</PageTitle>
-<h1>Démonstration</h1>
-<p><i>les sections suivantes sont en cours de développement. Elles présentent le détail de la méthode et les
-        fonctionnalités qui lui seront prochainement associées</i></p>
-
 
 @if (GetEtapes == null)
 {
     <p><em>Chargement...</em></p>
+    <button class="button" @onclick=Clear>Vider le cache</button>
 }
 else
 {
-    E = GetEtapes[IEtape % GetEtapes.Count()];
-
-    <h2>@E?.Etape</h2>
+    E = GetEtapes?[IEtape % GetEtapes.Count()];
+    <h1>@E?.Etape</h1>
     <span class="oi oi-briefcase" aria-hidden="true"></span>
-    <p>@E?.Objectif</p>
+    <p class="sh1">@E?.Objectif</p>
+    
 
     @foreach (Atelier A in E.Ateliers)
     {
@@ -95,7 +92,7 @@ else
                     <ul>
                         @if (@P.Referentiel != null)
                         {
-                            <li><b>Referentiel :</b> @P.Referentiel.Nom</li>
+                            <li><b>Referentiel :</b> @P.Referentiel.Nom</li><br>
                         }
                         <li>
                             <input class="CheckBox" type="checkbox" @bind=@P.Fin name=@P.Nom value=@P.Nom />
@@ -114,6 +111,7 @@ else
             <a href="/simple-demo/@((IEtape-1))"><input type="button" class="button" value="< Etape précédente"></a>
         }
         <button class="button" @onclick=Save>Sauvegarder</button>
+        <button class="button" @onclick=Clear>Réinitialiser</button>
         @if ((IEtape % GetEtapes.Count()) != GetEtapes.Count() - 1)
         {
             <a href="/simple-demo/@((IEtape+1))"><input type="button" class="button" value="Etape Suivante >"></a>
@@ -134,9 +132,11 @@ else
 
     protected override async Task OnInitializedAsync()
     {
+        
         try
         {
             GetEtapes = await localStorage.GetItemAsync<SEtape[]>("SIMPLE");
+            
             @foreach (SEtape E in GetEtapes)
             {
                 @foreach (Atelier A in E.Ateliers)
@@ -149,6 +149,7 @@ else
         }
         catch
         {
+            await localStorage.ClearAsync();
             GetEtapes = await Http.GetFromJsonAsync<SEtape[]>("/Data/SIMPLE.json");
         }
     }
@@ -158,9 +159,8 @@ else
         await localStorage.SetItemAsync("SIMPLE", GetEtapes);
     }
 
-    private void AddListEls()
-    {
-        NewEl.Texte = "Nouvel Élément";
+    public async Task Clear(){
+        await localStorage.ClearAsync();
     }
 
 }

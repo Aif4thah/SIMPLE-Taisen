@@ -19,7 +19,7 @@
               {
                 "Nom": "Compte rendu de la présentation des fonctions métier",
                 "CR": {
-                  "Texte": "..."
+                  "Texte": "Saisie du CR"
                 }
               }
             ]
@@ -44,7 +44,7 @@
               {
                 "Nom": "URL",
                 "CR": {
-                  "Texte": "..."
+                  "Texte": "Saisie du CR"
                 }
               }
             ]
@@ -228,7 +228,7 @@
               {
                 "Nom": "Compte rendu d'atelier",
                 "CR": {
-                  "Texte": "..."
+                  "Texte": "Saisie du CR"
                 }
               }
             ]
@@ -257,7 +257,7 @@
               {
                 "Nom": "Compte rendu d'atelier",
                 "CR": {
-                  "Texte": "..."
+                  "Texte": "Saisie du CR"
                 }
               }
             ]
@@ -283,7 +283,7 @@
               {
                 "Nom": "PV de recette",
                 "CR": {
-                  "Texte": "..."
+                  "Texte": "Saisie du CR"
                 }
               }
             ]
@@ -306,7 +306,7 @@
               {
                 "Nom": "Date de signature du PV de livraison",
                 "CR": {
-                  "Texte": "..."
+                  "Texte": "Saisie du CR"
                 }
               }
             ]
@@ -318,7 +318,7 @@
               {
                 "Nom": "Date d'effacement sécurisé des données",
                 "CR": {
-                  "Texte": "..."
+                  "Texte": "Saisie du CR"
                 }
               }
             ]
