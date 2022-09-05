@@ -7,18 +7,23 @@
 <PageTitle>SIMPLE</PageTitle>
 
 <h1>Méthode SIMPLE</h1>
-<p class="sh1">L'objectif de cette méthode est de faire progresser significativement le niveau de sécurité d'un projet en moins de 2 mois</p>
+<p class="sh1">L'objectif de cette méthode est de faire progresser significativement le niveau de sécurité d'un projet
+    en moins de 2 mois</p>
 
-
-<h2>Périmètre</h2>
-<span class="oi oi-crop" aria-hidden="true"></span>
-<div class="bgDiv">
-    <p>Le champ de cette méthodologie cible les projets applicatifs ainsi que l'infrastructure sur laquelle ils reposent, ce qui inclut:</p>
+<div>
+    <h2>Périmètre</h2>
+    <span class="oi oi-crop" aria-hidden="true"></span>
+    <br>
+    <p>Le champ de cette méthodologie cible les projets applicatifs ainsi que l'infrastructure sur laquelle ils
+        reposent, ce qui inclut:</p>
     <ul>
-        <li>- toute application métier, qu'il s'agisse d'un environnement  Web, industriel, IoT, cloud, hybride, etc.</li>
+        <li>- toute application métier, qu'il s'agisse d'un environnement Web, industriel, IoT, cloud, hybride, etc.
+        </li>
         <li>- le middleware, les librairies, les dépendances et les composants tiers</li>
         <li>- les composants du système d’exploitation, des microservices, ainsi que leur orchestration</li>
+        <br>
     </ul>
+    
 </div>
 
 @if (GetEtapes == null)
@@ -28,11 +33,11 @@
 else
 {
 
-
-    <h2>Référentiels</h2>
-    <span class="oi oi-compass" aria-hidden="true"></span>
-    <br />
     <div class="bgDiv">
+        <br>
+        <h2>Référentiels</h2>
+        <span class="oi oi-compass" aria-hidden="true"></span>
+        <br>
         @foreach (SEtape E in GetEtapes)
         {
             @foreach (Atelier A in E.Ateliers)
@@ -48,23 +53,29 @@ else
                 }
             }
         }
+        <br>
     </div>
 
-
-    <h2>Étapes</h2>
-    <span class="oi oi-key" aria-hidden="true"></span>
-    <div class="bgDiv">
+    <div>
+        <br>
+        <h2>Étapes</h2>
+        <span class="oi oi-key" aria-hidden="true"></span>
+        <br>
         <ul>
             @foreach (SEtape E in GetEtapes)
             {
-                <li><b>@E.Etape.FirstOrDefault()</b> :  @E.Etape</li>
+                <li><b>@E.Etape.FirstOrDefault()</b> : @E.Etape</li>
             }
+            <br>
         </ul>
+        
     </div>
 
-    <h2>Ateliers</h2>
-    <span class="oi oi-layers" aria-hidden="true"></span>
     <div class="bgDiv">
+        <br>
+        <h2>Ateliers</h2>
+        <span class="oi oi-layers" aria-hidden="true"></span>
+        <br>
         <table class="table">
             <thead>
                 <tr>
@@ -85,8 +96,9 @@ else
                     }
             </tbody>
         </table>
+        <a>Soit un poids total de @TotalPoids jours</a>
     </div>
-    <a>Soit un poids total de @TotalPoids jours</a>
+    
 }
 
 <form>
