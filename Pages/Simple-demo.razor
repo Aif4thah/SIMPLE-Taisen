@@ -120,18 +120,88 @@ else
                                     @foreach (FonctionSensible fs in L.CR.FonctionSensibles)
                                     {
                                         <InputText @bind-Value=@fs.Nom />
-                                        <label>S<InputCheckbox @bind-Value=@fs.Spoofing /></label>
-                                        <label>T<InputCheckbox @bind-Value=@fs.Tampering /></label>
-                                        <label>R<InputCheckbox @bind-Value=@fs.Repudiation /></label>
-                                        <label>I<InputCheckbox @bind-Value=@fs.InformationDisclosure /></label>
-                                        <label>D<InputCheckbox @bind-Value=@fs.DenialOfService /></label>
-                                        <label>E<InputCheckbox @bind-Value=@fs.ElevationOfPrivilege /></label>
+                                        <label>S:
+                                            <InputCheckbox @bind-Value=@fs.Spoofing />
+                                        </label>
+                                        <label>T:
+                                            <InputCheckbox @bind-Value=@fs.Tampering />
+                                        </label>
+                                        <label>R:
+                                            <InputCheckbox @bind-Value=@fs.Repudiation />
+                                        </label>
+                                        <label>I:
+                                            <InputCheckbox @bind-Value=@fs.InformationDisclosure />
+                                        </label>
+                                        <label>D:
+                                            <InputCheckbox @bind-Value=@fs.DenialOfService />
+                                        </label>
+                                        <label>E:
+                                            <InputCheckbox @bind-Value=@fs.ElevationOfPrivilege />
+                                        </label>
                                         <br>
                                     }
                                 </EditForm>
                                 <button class="button" @onclick=Save>Ajouter</button>
                             </form>
                         }
+
+                        else if (@L.CR?.MesureSecurites?.Count > 0)
+                        {
+                            @if (@L.CR.MesureSecurites.LastOrDefault()?.Nom != DefaultStr)
+                            {
+                                L.CR.MesureSecurites.Add(new MesureSecurite()
+                                {
+                                    Nom = DefaultStr,
+                                    Description = DefaultStr,
+                                    SpoofingPrevention = false,
+                                    TamperingPrevention = false,
+                                    RepudiationPrevention = false,
+                                    InformationDisclosurePrevention = false,
+                                    DenialOfServicePrevention = false,
+                                    ElevationOfPrivilegePrevention = false
+                                });
+                            }
+
+                            <form>
+                                <EditForm Model=@L.CR.MesureSecurites>
+                                    @foreach (MesureSecurite ms in @L.CR.MesureSecurites)
+                                    {
+                                        <InputSelect @bind-Value=@ms.FonctionCible>
+                                            <option value="">Lier à une Fonctions sensible</option>
+                                            @foreach (FonctionSensible fs in CollectedFs)
+                                            {
+                                                <option value=@fs.Nom>@fs.Nom</option>
+                                            }
+                                        </InputSelect>
+
+                                        <InputText @bind-Value=@ms.Nom />
+                                        <InputText @bind-Value=@ms.Description />
+                                        <label>S:
+                                            <InputCheckbox @bind-Value=@ms.SpoofingPrevention />
+                                        </label>
+                                        <label>T:
+                                            <InputCheckbox @bind-Value=@ms.TamperingPrevention />
+                                        </label>
+                                        <label>R:
+                                            <InputCheckbox @bind-Value=@ms.RepudiationPrevention />
+                                        </label>
+                                        <label>I:
+                                            <InputCheckbox @bind-Value=@ms.InformationDisclosurePrevention />
+                                        </label>
+                                        <label>D:
+                                            <InputCheckbox @bind-Value=@ms.DenialOfServicePrevention />
+                                        </label>
+                                        <label>E:
+                                            <InputCheckbox @bind-Value=@ms.ElevationOfPrivilegePrevention />
+                                        </label>
+                                        <br>
+                                    }
+                                </EditForm>
+                                <button class="button" @onclick=Save>Ajouter</button>
+                            </form>
+                        }
+
+
                     }
 
                     <ul>
@@ -165,9 +235,8 @@ else
 @code {
     [Parameter]
     public int IEtape { get; set; } = 0;
-
     public string DefaultStr = "Nouvel Élément";
-
+    private List<FonctionSensible> CollectedFs = new List<FonctionSensible>();
     private SEtape[]? GetEtapes;
     private SEtape? E;
 
@@ -178,21 +247,14 @@ else
         try
         {
             GetEtapes = await localStorage.GetItemAsync<SEtape[]>("SIMPLE");
+            VerifyAndGetFonctionSensibles();
 
-            @foreach (SEtape E in GetEtapes)
-            {
-                @foreach (Atelier A in E.Ateliers)
-                {
-                    Console.WriteLine("Load from browser\nAtelier: {0}\nPoids: {1}", A.Nom, A.Poids.ToString());
-                    @foreach (Processus P in A.Processus)
-                        Console.WriteLine("Load from browser\nProcessus: {0}\nFin: {1}", P.Nom, P.Fin);
-                }
-            }
         }
         catch
         {
             await localStorage.ClearAsync();
             GetEtapes = await Http.GetFromJsonAsync<SEtape[]>("/Data/SIMPLE.json");
+            VerifyAndGetFonctionSensibles();
         }
     }
 
@@ -206,4 +268,28 @@ else
         await localStorage.ClearAsync();
     }
 
+    public void VerifyAndGetFonctionSensibles()
+    {
+        @foreach (SEtape E in GetEtapes)
+        {
+            @foreach (Atelier A in E.Ateliers)
+            {
+                A.Nom.GetType();
+                A.Poids.GetType();
+                @foreach (Processus P in A.Processus)
+                {
+                    P.Nom.GetType();
+                    @foreach (Livrable L in P.Livrables)
+                    {
+                        L.Nom.GetType();
+                        @if (L.CR?.FonctionSensibles?.Count > 0)
+                        {
+                            CollectedFs?.AddRange(L.CR.FonctionSensibles);
+                        }
+                    }
+                }
+            }
+        }
+
+    }
 }

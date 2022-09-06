@@ -19,7 +19,7 @@
               {
                 "Nom": "Compte rendu de la présentation des fonctions métier",
                 "CR": {
-                  "Texte": ""
+                  "Texte": "Fonction1"
                 }
               }
             ]
@@ -33,10 +33,10 @@
                 "CR": {
                   "Els": [
                     {
-                      "Texte": ""
+                      "Texte": "Document1"
                     },
                     {
-                      "Texte": ""
+                      "Texte": "Document2"
                     }
                   ]
                 }
@@ -50,7 +50,7 @@
               {
                 "Nom": "URL",
                 "CR": {
-                  "Texte": ""
+                  "Texte": "https://..."
                 }
               }
             ]
@@ -64,10 +64,10 @@
                 "CR": {
                   "Els": [
                     {
-                      "Texte": ""
+                      "Texte": "Document1"
                     },
                     {
-                      "Texte": ""
+                      "Texte": "Document2"
                     }
                   ]
                 }
@@ -101,7 +101,7 @@
                 "CR": {
                   "FonctionSensibles": [
                     {
-                      "Nom": "",
+                      "Nom": "FonctionSensible1",
                       "Spoofing": true,
                       "Tampering": true,
                       "Repudiation": true,
@@ -139,7 +139,7 @@
                 "CR": {
                   "FonctionSensibles": [
                     {
-                      "Nom": "",
+                      "Nom": "FonctionSensible1",
                       "Spoofing": true,
                       "Tampering": true,
                       "Repudiation": true,
@@ -178,10 +178,10 @@
                 "CR": {
                   "Els": [
                     {
-                      "Texte": ""
+                      "Texte": "Document1"
                     },
                     {
-                      "Texte": ""
+                      "Texte": "Document2"
                     }
                   ]
                 }
@@ -213,12 +213,17 @@
               {
                 "Nom": "Proposition d'une liste de mesure de sécurité à implémenter par le projet.",
                 "CR": {
-                  "Els": [
+                  "MesureSecurites": [
                     {
-                      "Texte": ""
-                    },
-                    {
-                      "Texte": ""
+                      "FonctionCible": null,
+                      "Nom": "MesureSecurité1",
+                      "Description" :"",
+                      "SpoofingPrevention" : false,
+                      "TamperingPrevention" : false,
+                      "RepudiationPrevention" : false,
+                      "InformationDisclosurePrevention" : false,
+                      "DenialOfServicePrevention" : false,
+                      "ElevationOfPrivilegePrevention" : false
                     }
                   ]
                 }
@@ -244,12 +249,17 @@
               {
                 "Nom": "Liste définitive des mesures de sécurité à implémenter par le projet",
                 "CR": {
-                  "Els": [
+                  "MesureSecurites": [
                     {
-                      "Texte": ""
-                    },
-                    {
-                      "Texte": ""
+                      "FonctionCible": null,
+                      "Nom": "MesureSecurité1",
+                      "Description" :"",
+                      "SpoofingPrevention" : false,
+                      "TamperingPrevention" : false,
+                      "RepudiationPrevention" : false,
+                      "InformationDisclosurePrevention" : false,
+                      "DenialOfServicePrevention" : false,
+                      "ElevationOfPrivilegePrevention" : false
                     }
                   ]
                 }
