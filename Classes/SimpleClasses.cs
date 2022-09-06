@@ -3,7 +3,6 @@ using System.ComponentModel.DataAnnotations;
 
 namespace TAISEN.Classes
 {
-
     public class SEtape
     {
         public string Etape { get; set; }
@@ -50,14 +49,31 @@ namespace TAISEN.Classes
         public string? Uri { get; set; }
     }
 
-    public class CompteRendu{
-        public string? Texte {get;set;}
-        public List<El>? Els {get; set;}
+    public class CompteRendu {
+        public string? Texte { get; set; }
+        public List<El>? Els { get; set; }
+
+        public List<FonctionSensible>? FonctionSensibles { get;set;}
     }
 
-    public class El{
+    public class El
+    {
         public string? Texte {get;set;}
+              
     }
+
+    public class FonctionSensible
+    {
+        public string? Nom { get; set; }
+        public bool Spoofing { get;set;}
+        public bool Tampering { get;set;}
+        public bool Repudiation { get;set;}   
+        public bool InformationDisclosure { get;set;}
+        public bool DenialOfService { get; set; }
+        public bool ElevationOfPrivilege { get;set;}
+
+    }
+
 
 
 }

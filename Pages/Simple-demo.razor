@@ -75,18 +75,17 @@ else
                     @foreach (Livrable L in P.Livrables)
                     {
                         <a>@L.Nom :</a>
-                        @if (@L.CR.Texte != null)
+                        @if (@L.CR?.Texte != null)
                         {
                             <form>
                                 <textarea class="TextBig" @bind=@L.CR.Texte></textarea>
                             </form>
                         }
-                        else if (@L.CR.Els?.Count != 0)
+                        else if (@L.CR?.Els?.Count > 0)
                         {
-                            @if (@L.CR.Els.LastOrDefault().Texte != "Nouvel Élément")
+                            @if (@L.CR.Els.LastOrDefault()?.Texte != DefaultStr)
                             {
-                                NewEl.Texte = "Nouvel Élément";
-                                L.CR.Els.Add(NewEl);
+                                L.CR.Els.Add(new El() { Texte = DefaultStr });
                             }
 
                             <form>
@@ -99,6 +98,39 @@ else
                                 <button class="button" @onclick=Save>Ajouter</button>
                             </form>
 
+                        }
+                        else if (@L.CR?.FonctionSensibles?.Count > 0)
+                        {
+                            @if (@L.CR.FonctionSensibles.LastOrDefault()?.Nom != DefaultStr)
+                            {
+                                L.CR.FonctionSensibles.Add(new FonctionSensible()
+                                {
+                                    Nom = DefaultStr,
+                                    Spoofing = true,
+                                    Tampering = true,
+                                    Repudiation = true,
+                                    InformationDisclosure = true,
+                                    DenialOfService = true,
+                                    ElevationOfPrivilege = true
+                                });
+                            }
+
+                            <form>
+                                <EditForm Model=@L.CR.FonctionSensibles>
+                                    @foreach (FonctionSensible fs in L.CR.FonctionSensibles)
+                                    {
+                                        <InputText @bind-Value=@fs.Nom />
+                                        <label>S<InputCheckbox @bind-Value=@fs.Spoofing /></label>
+                                        <label>T<InputCheckbox @bind-Value=@fs.Tampering /></label>
+                                        <label>R<InputCheckbox @bind-Value=@fs.Repudiation /></label>
+                                        <label>I<InputCheckbox @bind-Value=@fs.InformationDisclosure /></label>
+                                        <label>D<InputCheckbox @bind-Value=@fs.DenialOfService /></label>
+                                        <label>E<InputCheckbox @bind-Value=@fs.ElevationOfPrivilege /></label>
+                                        <br>
+                                    }
+                                </EditForm>
+                                <button class="button" @onclick=Save>Ajouter</button>
+                            </form>
                         }
                     }
 
@@ -115,13 +147,13 @@ else
         </div>
     }
     <form>
-        @if ((IEtape % GetEtapes.Count()) != 0)
+        @if ((IEtape % GetEtapes?.Count()) != 0)
         {
             <a href="/simple-demo/@((IEtape-1))"><input type="button" class="button" value="< Etape précédente"></a>
         }
         <button class="button" @onclick=Save>Sauvegarder</button>
         <button class="button" @onclick=Clear>Réinitialiser</button>
-        @if ((IEtape % GetEtapes.Count()) != GetEtapes.Count() - 1)
+        @if ((IEtape % GetEtapes?.Count()) != GetEtapes?.Count() - 1)
         {
             <a href="/simple-demo/@((IEtape+1))"><input type="button" class="button" value="Etape Suivante >"></a>
         }
@@ -134,7 +166,8 @@ else
     [Parameter]
     public int IEtape { get; set; } = 0;
 
-    private El NewEl = new El();
+    public string DefaultStr = "Nouvel Élément";
+
     private SEtape[]? GetEtapes;
     private SEtape? E;
 

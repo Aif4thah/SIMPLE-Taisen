@@ -19,7 +19,7 @@
               {
                 "Nom": "Compte rendu de la présentation des fonctions métier",
                 "CR": {
-                  "Texte": "Saisie du CR"
+                  "Texte": ""
                 }
               }
             ]
@@ -31,8 +31,14 @@
               {
                 "Nom": "Liste des documents réceptionnés",
                 "CR": {
-                  "Els": [ {"Texte": "Element1"}, {"Texte": "Element2"}]
-                  
+                  "Els": [
+                    {
+                      "Texte": ""
+                    },
+                    {
+                      "Texte": ""
+                    }
+                  ]
                 }
               }
             ]
@@ -44,7 +50,7 @@
               {
                 "Nom": "URL",
                 "CR": {
-                  "Texte": "Saisie du CR"
+                  "Texte": ""
                 }
               }
             ]
@@ -56,7 +62,14 @@
               {
                 "Nom": "Liste des documents réceptionnés",
                 "CR": {
-                  "Els": [ {"Texte": "Element1"}, {"Texte": "Element2"}]
+                  "Els": [
+                    {
+                      "Texte": ""
+                    },
+                    {
+                      "Texte": ""
+                    }
+                  ]
                 }
               }
             ]
@@ -86,7 +99,17 @@
               {
                 "Nom": "Proposition d'une liste exhaustive des fonctions sensibles du point de vue du métier et leurs enjeux pour la sécurité",
                 "CR": {
-                  "Els": [ {"Texte": "Element1"}, {"Texte": "Element2"}]
+                  "FonctionSensibles": [
+                    {
+                      "Nom": "",
+                      "Spoofing": true,
+                      "Tampering": true,
+                      "Repudiation": true,
+                      "InformationDisclosure": true,
+                      "DenialOfService": true,
+                      "ElevationOfPrivilege": true
+                    }
+                  ]
                 }
               }
             ]
@@ -114,7 +137,17 @@
               {
                 "Nom": "La liste définitive des fonctions métier à sécuriser",
                 "CR": {
-                  "Els": [ {"Texte": "Element1"}, {"Texte": "Element2"}]
+                  "FonctionSensibles": [
+                    {
+                      "Nom": "",
+                      "Spoofing": true,
+                      "Tampering": true,
+                      "Repudiation": true,
+                      "InformationDisclosure": true,
+                      "DenialOfService": true,
+                      "ElevationOfPrivilege": true
+                    }
+                  ]
                 }
               }
             ]
@@ -143,8 +176,14 @@
               {
                 "Nom": "Accusé de réception : Liste des documents reçus",
                 "CR": {
-                  "Els": [ {"Texte": "Element1"}, {"Texte": "Element2"}]
-
+                  "Els": [
+                    {
+                      "Texte": ""
+                    },
+                    {
+                      "Texte": ""
+                    }
+                  ]
                 }
               }
             ]
@@ -174,8 +213,14 @@
               {
                 "Nom": "Proposition d'une liste de mesure de sécurité à implémenter par le projet.",
                 "CR": {
-                  "Els": [ {"Texte": "Element1"}, {"Texte": "Element2"}]
-
+                  "Els": [
+                    {
+                      "Texte": ""
+                    },
+                    {
+                      "Texte": ""
+                    }
+                  ]
                 }
               }
             ]
@@ -199,7 +244,14 @@
               {
                 "Nom": "Liste définitive des mesures de sécurité à implémenter par le projet",
                 "CR": {
-                  "Els": [ {"Texte": "Element1"}, {"Texte": "Element2"}]
+                  "Els": [
+                    {
+                      "Texte": ""
+                    },
+                    {
+                      "Texte": ""
+                    }
+                  ]
                 }
               }
             ]
@@ -228,7 +280,7 @@
               {
                 "Nom": "Compte rendu d'atelier",
                 "CR": {
-                  "Texte": "Saisie du CR"
+                  "Texte": ""
                 }
               }
             ]
@@ -257,7 +309,7 @@
               {
                 "Nom": "Compte rendu d'atelier",
                 "CR": {
-                  "Texte": "Saisie du CR"
+                  "Texte": ""
                 }
               }
             ]
@@ -283,7 +335,7 @@
               {
                 "Nom": "PV de recette",
                 "CR": {
-                  "Texte": "Saisie du CR"
+                  "Texte": ""
                 }
               }
             ]
@@ -306,7 +358,7 @@
               {
                 "Nom": "Date de signature du PV de livraison",
                 "CR": {
-                  "Texte": "Saisie du CR"
+                  "Texte": ""
                 }
               }
             ]
@@ -318,7 +370,7 @@
               {
                 "Nom": "Date d'effacement sécurisé des données",
                 "CR": {
-                  "Texte": "Saisie du CR"
+                  "Texte": ""
                 }
               }
             ]
