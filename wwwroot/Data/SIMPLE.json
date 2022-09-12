@@ -307,12 +307,12 @@
         ],
         "Processus": [
           {
-            "Nom": "En liaison étroite avec le projet, élaboration de jeux de tests adaptés parmi les possibilités suivantes : Tests unitaires, SAST, DAST, IAST",
+            "Nom": "En liaison étroite avec le projet, élaboration de jeux de tests à integrer aux tests unitaires et DAST/IAST",
             "Fin": false,
             "Outils": [
               {
-                "Nom": "CShidori",
-                "Uri": "https://github.com/Aif4thah/CShidori"
+                "Nom": "CShidori-Online",
+                "Uri": "https://taisen.eu/CShidori-demo"
               }
             ],
             "Livrables": [
@@ -345,6 +345,13 @@
               {
                 "Nom": "PV de recette",
                 "CR": {
+                  
+                  "RecetteSecus" : [
+                    {
+                      "MesureTestee" : "Nouvel Élément",
+                      "Efficacite": 0
+                    }
+                  ],
                   "Texte": ""
                 }
               }

@@ -64,10 +64,24 @@ else
                     {
                         <div>
                             <ul>
-                                <li><b>Referentiel :</b> @P.Referentiel.Nom</li>
+                                <li><b>Referentiel : </b><a href="@P.Referentiel.Uri">@P.Referentiel.Nom</a></li>
                             </ul>
                         </div>
                         <br>
+                    }
+
+                    @if (@P.Outils != null)
+                    {
+                        @foreach (Outil tool in @P.Outils)
+                        {
+                            <div>
+                                <ul>
+                                    <li><b>Outillage : </b><a href="@tool.Uri">@tool.Nom</a></li>
+                                </ul>
+                            </div>
+                            <br>
+                        }
+
                     }
 
 
@@ -81,7 +95,9 @@ else
                                 <textarea class="TextBig" @bind=@L.CR.Texte></textarea>
                             </form>
                         }
-                        else if (@L.CR?.Els?.Count > 0)
+
+
+                        if (@L.CR?.Els?.Count > 0)
                         {
                             @if (@L.CR.Els.LastOrDefault()?.Texte != DefaultStr)
                             {
@@ -99,7 +115,9 @@ else
                             </form>
 
                         }
-                        else if (@L.CR?.FonctionSensibles?.Count > 0)
+
+
+                        if (@L.CR?.FonctionSensibles?.Count > 0)
                         {
                             @if (@L.CR.FonctionSensibles.LastOrDefault()?.Nom != DefaultStr)
                             {
@@ -145,7 +163,8 @@ else
                             </form>
                         }
 
-                        else if (@L.CR?.MesureSecurites?.Count > 0)
+
+                        if (@L.CR?.MesureSecurites?.Count > 0)
                         {
                             @if (@L.CR.MesureSecurites.LastOrDefault()?.Nom != DefaultStr)
                             {
@@ -158,7 +177,7 @@ else
                                     RepudiationPrevention = false,
                                     InformationDisclosurePrevention = false,
                                     DenialOfServicePrevention = false,
-                                    ElevationOfPrivilegePrevention = false
+                                    ElevationOfPrivilegePrevention = false,
                                 });
                             }
 
@@ -170,9 +189,9 @@ else
                                             <option value="">Lier à une Fonctions sensible</option>
                                             @foreach (FonctionSensible fs in CollectedFs)
                                             {
-                                                <option value=@fs.Nom>@fs.Nom</option>
+                        <option value=@fs.Nom>@fs.Nom</option>
                                             }
-                                        </InputSelect>
+                </InputSelect>
 
                                         <InputText @bind-Value=@ms.Nom />
                                         <InputText @bind-Value=@ms.Description />
@@ -194,6 +213,42 @@ else
                                         <label>E:
                                             <InputCheckbox @bind-Value=@ms.ElevationOfPrivilegePrevention />
                                         </label>
+                                        <br>
+                                    }
+                                </EditForm>
+                                <button class="button" @onclick=Save>Ajouter</button>
+                            </form>
+                        }
+
+
+
+
+
+                        if (@L.CR?.RecetteSecus?.Count > 0)
+                        {
+                            @if (@L.CR.RecetteSecus.LastOrDefault()?.MesureTestee != DefaultStr)
+                            {
+                                L.CR.RecetteSecus.Add(new RecetteSecu()
+                                {
+                                    MesureTestee = DefaultStr,
+                                    Efficacite = 0
+                                });
+                            }
+
+                            <form>
+                                <EditForm Model=@L.CR.RecetteSecus>
+                                     <DataAnnotationsValidator />
+                                    @foreach (RecetteSecu rs in @L.CR.RecetteSecus)
+                                    {
+                                        <InputSelect @bind-Value=@rs.MesureTestee>
+                                            <option value="">Lier à une Mesure de sécurité</option>
+                                            @foreach (MesureSecurite ms in CollectedMs)
+                                            {
+                        <option value=@ms.Nom>@ms.Nom</option>
+                                            }
+                </InputSelect>
+
+                                        <InputNumber id="name" @bind-Value=@rs.Efficacite />
                                         <br>
                                     }
                                 </EditForm>
@@ -237,6 +292,7 @@ else
     public int IEtape { get; set; } = 0;
     public string DefaultStr = "Nouvel Élément";
     private List<FonctionSensible> CollectedFs = new List<FonctionSensible>();
+    private List<MesureSecurite> CollectedMs = new List<MesureSecurite>();
     private SEtape[]? GetEtapes;
     private SEtape? E;
 
@@ -247,14 +303,14 @@ else
         try
         {
             GetEtapes = await localStorage.GetItemAsync<SEtape[]>("SIMPLE");
-            VerifyAndGetFonctionSensibles();
+            CheckAndGet();
 
         }
         catch
         {
             await localStorage.ClearAsync();
             GetEtapes = await Http.GetFromJsonAsync<SEtape[]>("/Data/SIMPLE.json");
-            VerifyAndGetFonctionSensibles();
+            CheckAndGet();
         }
     }
 
@@ -268,7 +324,7 @@ else
         await localStorage.ClearAsync();
     }
 
-    public void VerifyAndGetFonctionSensibles()
+    public void CheckAndGet()
     {
         @foreach (SEtape E in GetEtapes)
         {
@@ -282,14 +338,20 @@ else
                     @foreach (Livrable L in P.Livrables)
                     {
                         L.Nom.GetType();
-                        @if (L.CR?.FonctionSensibles?.Count > 0)
+                        @if (A.Nom == "I2" && L.CR?.FonctionSensibles?.Count > 0)
                         {
                             CollectedFs?.AddRange(L.CR.FonctionSensibles);
                         }
+                        else if (A.Nom == "P2" && L.CR?.MesureSecurites?.Count > 0)
+                        {
+                            CollectedMs?.AddRange(L.CR.MesureSecurites);
+                            CollectedMs = CollectedMs?.Distinct().ToList();
+                        }
+
                     }
                 }
             }
         }
-
     }
+
 }

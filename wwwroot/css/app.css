@@ -19,7 +19,7 @@ h1:focus {
 }
 
 a {
-    color: #0071c1;
+    color: #c10000;
 }
 
 p {
@@ -53,13 +53,13 @@ li {
 }
 
 .btn-link {
-    color: #830000;
+    color: black;
 }
 
 .btn-primary {
     color: #fff;
-    background-color: #1b6ec2;
-    border-color: #1861ac;
+    background-color: black;
+    border-color: black;
 }
 
 .content {
@@ -138,15 +138,15 @@ table {
 h2 {
     margin-top: 30px;
     margin-bottom: 10px;
-    color: rgb(143, 37, 37);
+    color: black;
     text-align: center !important;
-    font-size: 32px !important;
+    font-size: 40px !important;
 }
 
 h3 {
     margin-top: 20px;
     margin-bottom: 7px;
-    color: rgb(153, 61, 61);
+    color: black;
     text-align: center !important;
     font-size: 22px !important;
 }
@@ -161,16 +161,20 @@ h4 {
 }
 
 .button {
-    background-color: rgb(134, 22, 22);
-    border: none;
+    background-color: black;
+    border: 1px solid black;
     color: white;
+    font-size: 1.10rem;
+    border-radius: 99px;
     padding: 10px;
     margin: 10px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 15px;
+    font-weight: 450;
+    height: 55px;
     cursor: pointer;
+    width: 18em;
 }
 
 .imgLogo {

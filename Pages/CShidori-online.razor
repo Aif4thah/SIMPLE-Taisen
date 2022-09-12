@@ -1,0 +1,51 @@
+﻿@page "/CShidori-online"
+@layout SimpleLayout
+@using TAISEN.Classes;
+@using CShidori.Core;
+
+
+<PageTitle>CShidori</PageTitle>
+
+<center><hr class="line"></center>
+<h1>CShidori Online</h1>
+
+<div>
+    <p>
+        Cette application est une version en ligne de l'outil <a href="https://github.com/Aif4thah/CShidori">CShidori</a>.
+        Le package Nuget ou la version en ligne de commandes sont également gratuits et permettent d'aller plus loin.
+    </p>
+</div>
+
+<div class="bgDiv">
+    <EditForm Model="@CSo" OnValidSubmit="@GenerateOut">
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+        <p>
+            <label>Saisie attendue de l'utilisateur légitime :</label><br />
+            <InputText id="input" @bind-Value="CSo.Input" />
+        </p>
+
+        <button type="submit">Generer</button>
+    </EditForm>
+
+    <fieldset>
+        <legend>Jeux de données pour le Fuzzing :</legend>
+        <form>
+            <textarea class="TextBig" @bind=@JeuxDeTest></textarea>
+        </form>
+    </fieldset>
+</div>
+
+@code {
+
+    string JeuxDeTest = string.Empty;
+    private CShidObj CSo = new();
+
+    private void GenerateOut()
+    {
+        if (CSo.Input?.Length > 0){
+            new MutDispatcher(CSo.Input.Length * BadStrings.Output.Count(), CSo.Input).Output?.ForEach(x => JeuxDeTest += x + "\n");
+        }      
+    }
+
+}

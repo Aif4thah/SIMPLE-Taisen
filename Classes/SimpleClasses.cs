@@ -53,6 +53,7 @@ namespace TAISEN.Classes
         public List<El>? Els { get; set; }
         public List<FonctionSensible>? FonctionSensibles { get; set; }
         public List<MesureSecurite>? MesureSecurites { get; set; }
+        public List<RecetteSecu>? RecetteSecus {get; set;}
     }
 
     public class El
@@ -82,6 +83,16 @@ namespace TAISEN.Classes
         public bool InformationDisclosurePrevention { get; set; }
         public bool DenialOfServicePrevention { get; set; }
         public bool ElevationOfPrivilegePrevention { get; set; }
+
+    }
+
+    public class RecetteSecu{
+
+            [Required]
+            public string? MesureTestee {get; set;}
+            [Required]
+            [Range(1, 100, ErrorMessage = "doit etre un pourcentage (0-100)")]
+            public int? Efficacite {get; set;}
     }
 
 
