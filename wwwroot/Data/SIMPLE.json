@@ -13,11 +13,11 @@
         ],
         "Processus": [
           {
-            "Nom": "Présentation des fonctions métier",
+            "Nom": "Présentation du projet",
             "Fin": true,
             "Livrables": [
               {
-                "Nom": "Compte rendu de la présentation des fonctions métier",
+                "Nom": "Compte rendu de la présentation du projet",
                 "CR": {
                   "Texte": "Fonction1"
                 }
@@ -34,9 +34,6 @@
                   "Els": [
                     {
                       "Texte": "Document1"
-                    },
-                    {
-                      "Texte": "Document2"
                     }
                   ]
                 }
@@ -65,9 +62,6 @@
                   "Els": [
                     {
                       "Texte": "Document1"
-                    },
-                    {
-                      "Texte": "Document2"
                     }
                   ]
                 }
@@ -179,9 +173,6 @@
                   "Els": [
                     {
                       "Texte": "Document1"
-                    },
-                    {
-                      "Texte": "Document2"
                     }
                   ]
                 }
