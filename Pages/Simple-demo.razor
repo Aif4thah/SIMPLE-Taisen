@@ -104,6 +104,8 @@ else
                                 L.CR.Els.Add(new El() { Texte = DefaultStr });
                             }
 
+                            @L.CR.Els.RemoveAll(El => El.Texte == String.Empty);
+
                             <form>
                                 <EditForm Model=@L.CR.Els>
                                     @foreach (El el in L.CR.Els)
@@ -132,6 +134,8 @@ else
                                     ElevationOfPrivilege = true
                                 });
                             }
+
+                            @L.CR.FonctionSensibles.RemoveAll(fs => fs.Nom == String.Empty)
 
                             <form>
                                 <EditForm Model=@L.CR.FonctionSensibles>
@@ -180,6 +184,8 @@ else
                                     ElevationOfPrivilegePrevention = false,
                                 });
                             }
+
+                            @L.CR.MesureSecurites.RemoveAll( ms => ms.Nom == String.Empty);
 
                             <form>
                                 <EditForm Model=@L.CR.MesureSecurites>
@@ -230,6 +236,8 @@ else
                                     Efficacite = 0
                                 });
                             }
+
+                            @L.CR.RecetteSecus.RemoveAll(rs => rs.MesureTestee == string.Empty);
 
                             <form>
                                 <EditForm Model=@L.CR.RecetteSecus>
@@ -310,8 +318,6 @@ else
     {
         await localStorage.SetItemAsync("SIMPLE", GetEtapes);
     }
-
-
 
     public void CheckAndGet()
     {
