@@ -111,7 +111,7 @@ else
                                         <InputText @bind-Value=@el.Texte /><br>
                                     }
                                 </EditForm>
-                                <button class="button" @onclick=Save>Ajouter</button>
+                                <button class="button" @onclick=Save>Sauvegarder</button>
                             </form>
 
                         }
@@ -159,7 +159,7 @@ else
                                         <br>
                                     }
                                 </EditForm>
-                                <button class="button" @onclick=Save>Ajouter</button>
+                                <button class="button" @onclick=Save>Sauvegarder</button>
                             </form>
                         }
 
@@ -216,13 +216,9 @@ else
                                         <br>
                                     }
                                 </EditForm>
-                                <button class="button" @onclick=Save>Ajouter</button>
+                                <button class="button" @onclick=Save>Sauvegarder</button>
                             </form>
                         }
-
-
-
-
 
                         if (@L.CR?.RecetteSecus?.Count > 0)
                         {
@@ -237,7 +233,7 @@ else
 
                             <form>
                                 <EditForm Model=@L.CR.RecetteSecus>
-                                     <DataAnnotationsValidator />
+                                    <DataAnnotationsValidator />
                                     @foreach (RecetteSecu rs in @L.CR.RecetteSecus)
                                     {
                                         <InputSelect @bind-Value=@rs.MesureTestee>
@@ -252,11 +248,9 @@ else
                                         <br>
                                     }
                                 </EditForm>
-                                <button class="button" @onclick=Save>Ajouter</button>
+                                <button class="button" @onclick=Save>Sauvegarder</button>
                             </form>
                         }
-
-
                     }
 
                     <ul>
@@ -276,8 +270,6 @@ else
         {
             <a href="/simple-demo/@((IEtape-1))"><input type="button" class="button" value="< Etape précédente"></a>
         }
-        <button class="button" @onclick=Save>Sauvegarder</button>
-        <button class="button" @onclick=Clear>Réinitialiser</button>
         @if ((IEtape % GetEtapes?.Count()) != GetEtapes?.Count() - 1)
         {
             <a href="/simple-demo/@((IEtape+1))"><input type="button" class="button" value="Etape Suivante >"></a>
@@ -319,10 +311,7 @@ else
         await localStorage.SetItemAsync("SIMPLE", GetEtapes);
     }
 
-    public async Task Clear()
-    {
-        await localStorage.ClearAsync();
-    }
+
 
     public void CheckAndGet()
     {
@@ -340,18 +329,29 @@ else
                         L.Nom.GetType();
                         @if (A.Nom == "I2" && L.CR?.FonctionSensibles?.Count > 0)
                         {
-                            CollectedFs?.AddRange(L.CR.FonctionSensibles);
+                            foreach( FonctionSensible fs in L.CR.FonctionSensibles){
+                                @if( fs.Nom != DefaultStr){
+                                    CollectedFs?.Add(fs);
+                                }
+                            }
                         }
                         else if (A.Nom == "P2" && L.CR?.MesureSecurites?.Count > 0)
                         {
-                            CollectedMs?.AddRange(L.CR.MesureSecurites);
-                            CollectedMs = CollectedMs?.Distinct().ToList();
+                            foreach(MesureSecurite ms in L.CR.MesureSecurites ){
+                                @if(ms.Nom != DefaultStr){
+                                    CollectedMs?.Add(ms);
+                                }                                
+                            }
                         }
-
                     }
                 }
             }
         }
+    }
+
+    public async Task Clear()
+    {
+        await localStorage.ClearAsync();
     }
 
 }

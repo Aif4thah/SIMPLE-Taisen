@@ -109,8 +109,9 @@ else
 }
 
 <form>
-    <a href="/simple-demo">
-        <input type="button" class="button" value="Démarrer un accompagnement">
+    <a href="/simple-demo">        
+        <button class="button" @onclick=Clear>Nouvel Accompagnement</button>
+        <input type="button" class="button" value="Poursuivre">
     </a>
 </form>
 
@@ -120,5 +121,10 @@ else
     protected override async Task OnInitializedAsync()
     {
         GetEtapes = await Http.GetFromJsonAsync<SEtape[]>("/Data/SIMPLE.json");
+    }
+
+    public async Task Clear()
+    {
+        await localStorage.ClearAsync();
     }
 }

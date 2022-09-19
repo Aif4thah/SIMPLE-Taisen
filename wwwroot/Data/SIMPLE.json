@@ -208,7 +208,7 @@
                     {
                       "FonctionCible": null,
                       "Nom": "MesureSecurité1",
-                      "Description" :"",
+                      "Description" :"Description",
                       "SpoofingPrevention" : false,
                       "TamperingPrevention" : false,
                       "RepudiationPrevention" : false,
@@ -244,7 +244,7 @@
                     {
                       "FonctionCible": null,
                       "Nom": "MesureSecurité1",
-                      "Description" :"",
+                      "Description" :"Description",
                       "SpoofingPrevention" : false,
                       "TamperingPrevention" : false,
                       "RepudiationPrevention" : false,
@@ -281,7 +281,7 @@
               {
                 "Nom": "Compte rendu d'atelier",
                 "CR": {
-                  "Texte": ""
+                  "Texte": "Nouvel Élément"
                 }
               }
             ]
@@ -310,7 +310,7 @@
               {
                 "Nom": "Compte rendu d'atelier",
                 "CR": {
-                  "Texte": ""
+                  "Texte": "Nouvel Élément"
                 }
               }
             ]
@@ -343,7 +343,7 @@
                       "Efficacite": 0
                     }
                   ],
-                  "Texte": ""
+                  "Texte": "Nouvel Élément"
                 }
               }
             ]
@@ -366,7 +366,7 @@
               {
                 "Nom": "Date de signature du PV de livraison",
                 "CR": {
-                  "Texte": ""
+                  "Texte": "Nouvel Élément"
                 }
               }
             ]
@@ -378,7 +378,7 @@
               {
                 "Nom": "Date d'effacement sécurisé des données",
                 "CR": {
-                  "Texte": ""
+                  "Texte": "Nouvel Élément"
                 }
               }
             ]

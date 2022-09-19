@@ -5,9 +5,14 @@
 
 Sources of [Taisen Solutions](https://taisen.fr/) Website + SIMPLE method
 
-## Contribution à la methode SIMPLE (fr)
+## Contribution à la méthode SIMPLE (fr)
 
-La methode SIMPLE est ouverte à tout contributeur souhaitant utiliser ou améliorer ce processus d'accompagnement.
+La méthode SIMPLE est ouverte à tout contributeur souhaitant utiliser ou améliorer ce processus d'accompagnement.
 
 * En ouvrant une "issue" pour un retour d'expérience
 * En créant une "pull request" pour une amélioration
+
+## À propos de la licence:
+
+Ce programme ainsi que la méthode SIMPLE est distribué sous licence GPLv3. Les dépendances ne sont pas modifiées et peuvent être liées à d'autres licences.
+
