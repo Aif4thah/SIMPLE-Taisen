@@ -96,7 +96,6 @@ else
                             </form>
                         }
 
-
                         if (@L.CR?.Els?.Count > 0)
                         {
                             @if (@L.CR.Els.LastOrDefault()?.Texte != DefaultStr)
@@ -104,7 +103,7 @@ else
                                 L.CR.Els.Add(new El() { Texte = DefaultStr });
                             }
 
-                            @L.CR.Els.RemoveAll(El => El.Texte == String.Empty);
+                            linqRslt = @L.CR.Els.RemoveAll(El => El.Texte == String.Empty);
 
                             <form>
                                 <EditForm Model=@L.CR.Els>
@@ -135,7 +134,7 @@ else
                                 });
                             }
 
-                            @L.CR.FonctionSensibles.RemoveAll(fs => fs.Nom == String.Empty)
+                            linqRslt = @L.CR.FonctionSensibles.RemoveAll(fs => fs.Nom == String.Empty);
 
                             <form>
                                 <EditForm Model=@L.CR.FonctionSensibles>
@@ -185,7 +184,7 @@ else
                                 });
                             }
 
-                            @L.CR.MesureSecurites.RemoveAll( ms => ms.Nom == String.Empty);
+                            linqRslt = @L.CR.MesureSecurites.RemoveAll( ms => ms.Nom == String.Empty);
 
                             <form>
                                 <EditForm Model=@L.CR.MesureSecurites>
@@ -237,7 +236,7 @@ else
                                 });
                             }
 
-                            @L.CR.RecetteSecus.RemoveAll(rs => rs.MesureTestee == string.Empty);
+                            linqRslt = @L.CR.RecetteSecus.RemoveAll(rs => rs.MesureTestee == string.Empty);
 
                             <form>
                                 <EditForm Model=@L.CR.RecetteSecus>
@@ -291,6 +290,7 @@ else
     [Parameter]
     public int IEtape { get; set; } = 0;
     public string DefaultStr = "Nouvel Élément";
+    public int linqRslt;
     private List<FonctionSensible> CollectedFs = new List<FonctionSensible>();
     private List<MesureSecurite> CollectedMs = new List<MesureSecurite>();
     private SEtape[]? GetEtapes;
