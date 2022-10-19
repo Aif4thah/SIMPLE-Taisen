@@ -191,7 +191,7 @@ else
                                     @foreach (MesureSecurite ms in @L.CR.MesureSecurites)
                                     {
                                         <InputSelect @bind-Value=@ms.FonctionCible>
-                                            <option value="">Lier à une Fonctions sensible</option>
+                                            <option value="">Lier à une fonction sensible</option>
                                             @foreach (FonctionSensible fs in CollectedFs)
                                             {
                         <option value=@fs.Nom>@fs.Nom</option>
@@ -244,7 +244,7 @@ else
                                     @foreach (RecetteSecu rs in @L.CR.RecetteSecus)
                                     {
                                         <InputSelect @bind-Value=@rs.MesureTestee>
-                                            <option value="">Lier à une Mesure de sécurité</option>
+                                            <option value="">Lier à une mesure de sécurité</option>
                                             @foreach (MesureSecurite ms in CollectedMs)
                                             {
                         <option value=@ms.Nom>@ms.Nom</option>

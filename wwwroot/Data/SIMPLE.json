@@ -74,7 +74,7 @@
   },
   {
     "Etape": "Identifier les fonctions sensibles",
-    "Objectif": "Établir et valider la liste exhaustive des fonctions qui feront l'objet d'une sécurisation. Les Ateliers I1 et I2 peuvent donner lieu à plusieurs itérations.",
+    "Objectif": "Cette étape vise à établir et valider la liste exhaustive des fonctions qui feront l'objet d'une sécurisation. Les Ateliers I1 et I2 peuvent donner lieu à plusieurs itérations.",
     "Ateliers": [
       {
         "Nom": "I1",
@@ -185,7 +185,7 @@
   },
   {
     "Etape": "Proposer des mesures de sécurité",
-    "Objectif": "Établir et valider les mesures de sécurité. Les ateliers P1 et P2 peuvent donner lieu à plusieurs itérations afin d'avoir des mesures de sécurité adaptées, efficaces et réalistes pour le projet.",
+    "Objectif": "Cette étape vise à établir et valider les mesures de sécurité. Les ateliers P1 et P2 peuvent donner lieu à plusieurs itérations afin d'avoir des mesures de sécurité adaptées, efficaces et réalistes pour le projet.",
     "Ateliers": [
       {
         "Nom": "P1",
@@ -298,12 +298,12 @@
         ],
         "Processus": [
           {
-            "Nom": "En liaison étroite avec le projet, élaboration de jeux de tests à integrer aux tests unitaires et DAST/IAST",
+            "Nom": "En liaison étroite avec le projet, élaboration de jeux de tests à integrer aux tests unitaires, DAST ou IAST",
             "Fin": false,
             "Outils": [
               {
                 "Nom": "CShidori-Online",
-                "Uri": "https://taisen.eu/CShidori-demo"
+                "Uri": "https://taisen.eu/CShidori-online"
               }
             ],
             "Livrables": [
