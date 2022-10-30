@@ -6,12 +6,15 @@
 
 <PageTitle>CShidori</PageTitle>
 
-<center><hr class="line"></center>
+<center>
+    <hr class="line">
+</center>
 <h1>CShidori Online</h1>
 
 <div>
     <p>
-        Cette application est une version en ligne de l'outil <a href="https://github.com/Aif4thah/CShidori">CShidori</a>.
+        Cette application est une version en ligne de l'outil <a
+            href="https://github.com/Aif4thah/CShidori">CShidori</a>.
         Le package Nuget ou la version en ligne de commandes sont également gratuits et permettent d'aller plus loin.
     </p>
 </div>
@@ -43,9 +46,10 @@
 
     private void GenerateOut()
     {
-        if (CSo.Input?.Length > 0){
+        if (CSo.Input?.Length > 0)
+        {
             new MutDispatcher(CSo.Input.Length * BadStrings.Output.Count(), CSo.Input).Output?.ForEach(x => JeuxDeTest += x + "\n");
-        }      
+        }
     }
 
 }
