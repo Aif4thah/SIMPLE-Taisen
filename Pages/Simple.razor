@@ -25,11 +25,9 @@
     <span class="oi oi-shield" aria-hidden="true"></span>
     <br>
     <p>
-        L'objectif de cette méthode d'accompagnement est de faire progresser significativement le niveau de sécurité
-        d'un projet en moins de 2 mois.
-        Cette méthode est public et open source. Chacun peut l'utiliser librement sur ce site.
-        Elle nécessite néanmoins l'expérience, l'expertise technique et la partialité d'une prestation d'accompagnement
-        en cybersécurité.
+        L'objectif de cette méthode est de faire progresser significativement le niveau de sécurité d'un projet en moins de 2 mois.
+        Cette méthode est publique et open source. Chacun peut l'utiliser librement et l'ajuster en fonction de son besoin.
+        Elle nécessite néanmoins l'expérience, l'expertise technique et la partialité d'une prestation d'accompagnement.
         Je reste à l'écoute de vos besoins et pour toute question autour de cette méthodologie.
     </p>
 </div>
@@ -62,7 +60,7 @@
         <div class="sk-cube sk-cube9"></div>
     </div>
 }
-else
+else if ( InputsCheck.SEtapeChek(GetEtapes))
 {
 
     <div class="bgDiv">
@@ -70,6 +68,7 @@ else
         <h2>Référentiels</h2>
         <span class="oi oi-compass" aria-hidden="true"></span>
         <br>
+
         @foreach (SEtape E in GetEtapes)
         {
             @foreach (Atelier A in E.Ateliers)
@@ -128,7 +127,7 @@ else
                     }
             </tbody>
         </table>
-        <a>Soit un poids total de @TotalPoids jours</a>
+        <a>Soit un poids total moyen de @TotalPoids jours pour un accompagnement type. Cette charge est ajustée selon le contexte.</a>
         <br>
     </div>
 

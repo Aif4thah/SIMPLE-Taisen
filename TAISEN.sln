@@ -5,6 +5,8 @@ VisualStudioVersion = 17.1.32319.34
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TAISEN", "TAISEN.csproj", "{EA0A625D-47A2-42D6-A5C8-663BF82715D9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TAISENTests", "..\TAISENTests\TAISENTests.csproj", "{48CDF025-44F9-4311-BB73-EF7C4A0F098D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{EA0A625D-47A2-42D6-A5C8-663BF82715D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EA0A625D-47A2-42D6-A5C8-663BF82715D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EA0A625D-47A2-42D6-A5C8-663BF82715D9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{48CDF025-44F9-4311-BB73-EF7C4A0F098D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{48CDF025-44F9-4311-BB73-EF7C4A0F098D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{48CDF025-44F9-4311-BB73-EF7C4A0F098D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{48CDF025-44F9-4311-BB73-EF7C4A0F098D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

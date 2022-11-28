@@ -8,6 +8,11 @@ namespace TAISEN.Classes
         public string Etape { get; set; }
         public string Objectif { get; set; }
         public IEnumerable<Atelier> Ateliers { get; set; }
+
+        public bool Check()
+        {
+            return this.Ateliers is IEnumerable<Atelier> && this.Etape is string && this.Objectif is string;
+        }
     }
 
     public class Atelier
@@ -18,6 +23,12 @@ namespace TAISEN.Classes
         public List<string>? Interlocuteurs { get; set; }
         public int Poids { get; set; }
         public IEnumerable<Processus> Processus { get; set; }
+
+        public bool Check()
+        {
+            return this.Processus is IEnumerable<Processus> && this.Nom is string && this.Description is string && this.Poids is int;
+        }
+
     }
 
     public class Processus
@@ -27,24 +38,43 @@ namespace TAISEN.Classes
         public IEnumerable<Outil>? Outils { get; set; }
         public IEnumerable<Livrable> Livrables { get; set; }
         public bool Fin { get; set; }
+
+        public bool Check()
+        {
+            return this.Livrables is IEnumerable<Livrable> Livrables && this.Nom is string && this.Fin is bool;
+        }
     }
 
     public class Livrable
     {
         public string Nom { get; set; }
         public CompteRendu? CR { get; set; }
+
+        public bool Check()
+        {
+            return this.Nom is string;
+        }
     }
 
     public class Referentiel
     {
         public string Nom { get; set; }
         public string? Uri { get; set; }
+
+        public bool Check()
+        {
+            return this.Nom is string;
+        }
     }
 
     public class Outil
     {
         public string Nom { get; set; }
         public string? Uri { get; set; }
+        public bool Check()
+        {
+            return this.Nom is string;
+        }
     }
 
     public class CompteRendu
@@ -54,6 +84,7 @@ namespace TAISEN.Classes
         public List<FonctionSensible>? FonctionSensibles { get; set; }
         public List<MesureSecurite>? MesureSecurites { get; set; }
         public List<RecetteSecu>? RecetteSecus {get; set;}
+
     }
 
     public class El

@@ -21,9 +21,9 @@
     </div>
     <button class="button" @onclick=Clear>Vider le cache</button>
 }
-else
+else if (InputsCheck.SEtapeChek(GetEtapes))
 {
-    E = GetEtapes?[IEtape % GetEtapes.Count()];
+    E = GetEtapes?[InputsCheck.SimpleIntCheck(IEtape, GetEtapes)];
     <h1>@E?.Etape</h1>
     <span class="oi oi-briefcase" aria-hidden="true"></span>
     <p class="sh1">@E?.Objectif</p>
@@ -313,14 +313,14 @@ else
         try
         {
             GetEtapes = await localStorage.GetItemAsync<SEtape[]>("SIMPLE");
-            CheckAndGet();
+            GetFsMs();
 
         }
         catch
         {
             await localStorage.ClearAsync();
             GetEtapes = await Http.GetFromJsonAsync<SEtape[]>("/Data/SIMPLE.json");
-            CheckAndGet();
+            GetFsMs();
         }
     }
 
@@ -329,20 +329,16 @@ else
         await localStorage.SetItemAsync("SIMPLE", GetEtapes);
     }
 
-    public void CheckAndGet()
+    public void GetFsMs()
     {
         @foreach (SEtape E in GetEtapes)
         {
             @foreach (Atelier A in E.Ateliers)
             {
-                A.Nom.GetType();
-                A.Poids.GetType();
                 @foreach (Processus P in A.Processus)
                 {
-                    P.Nom.GetType();
                     @foreach (Livrable L in P.Livrables)
                     {
-                        L.Nom.GetType();
                         @if (A.Nom == "I2" && L.CR?.FonctionSensibles?.Count > 0)
                         {
                             foreach (FonctionSensible fs in L.CR.FonctionSensibles)
