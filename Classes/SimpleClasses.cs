@@ -79,6 +79,8 @@ namespace TAISEN.Classes
 
     public class CompteRendu
     {
+        [Required]
+        [RegularExpression(@"^[\w\s.\-]{2,2000}$", ErrorMessage = "Saisie non valide")]
         public string? Texte { get; set; }
         public List<El>? Els { get; set; }
         public List<FonctionSensible>? FonctionSensibles { get; set; }
@@ -89,11 +91,15 @@ namespace TAISEN.Classes
 
     public class El
     {
+        [Required]
+        [RegularExpression(@"^[\w\s.\-]{2,2000}$", ErrorMessage = "Saisie non valide")]
         public string? Texte { get; set; }
     }
 
     public class FonctionSensible
     {
+        [Required]
+        [RegularExpression(@"^[\w.\-]{2,2000}$", ErrorMessage = "Saisie non valide")]
         public string Nom { get; set; }
         public bool Spoofing { get; set; }
         public bool Tampering { get; set; }
@@ -105,8 +111,15 @@ namespace TAISEN.Classes
 
     public class MesureSecurite
     {
+
         public string? FonctionCible { get; set; }
+
+        [Required]
+        [RegularExpression(@"^[\w.\-]{2,2000}$", ErrorMessage = "Saisie non valide")]
         public string? Nom { get; set; }
+
+        [Required]
+        [RegularExpression(@"^[\w.\-]{2,2000}$", ErrorMessage = "Saisie non valide")]
         public string? Description { get; set; }
         public bool SpoofingPrevention { get; set; }
         public bool TamperingPrevention { get; set; }

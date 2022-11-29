@@ -48,7 +48,7 @@
     {
         if (CSo.Input?.Length > 0)
         {
-            new MutDispatcher(CSo.Input.Length * BadStrings.Output.Count(), CSo.Input).Output?.ForEach(x => JeuxDeTest += x + "\n");
+            new MutDispatcher(1024, CSo.Input).Output?.ForEach(x => JeuxDeTest += x + "\n");
         }
     }
 
