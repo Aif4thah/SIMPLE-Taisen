@@ -1,16 +1,11 @@
 ﻿@page "/accompagnement"
-@layout SimpleLayout
-@inject HttpClient Http
-@inject Blazored.LocalStorage.ILocalStorageService localStorage
-@using TAISEN.Classes;
 
-<PageTitle>SIMPLE</PageTitle>
+<PageTitle>Accompagnment</PageTitle>
 
 <h1>Accompagnement</h1>
 <p class="sh1">
-        La méthode S.I.M.P.L.E est issue d'une capitalisation de l'expérience acquise auprès d'une centaine de projets
-        applicatifs. Les bonnes pratiques de l'<a href="https://www.ssi.gouv.fr/">ANSSI</a> et les standards de l'<a href="https://owasp.org/projects/">OWASP</a> 
-        sont intégrés à la méthode.
+        Mon offre d'accompagnement technique s'appuie sur des référentiels à l'état de l'art. 
+        L'objectif est de sécuriser vos projets applicatifs et leur infrastructure de manière concrète, cohérente et pragmatique.
 </p>
 
 <div class="bgAccompagnement">
@@ -20,136 +15,51 @@
     <hr class="line">
 </center>
 
+
 <div>
-    <h2>SIMPLE</h2>
-    <span class="oi oi-shield" aria-hidden="true"></span>
+    <br>
+    <h2>Le projet OWASP ASVS</h2>
+        <span class="oi oi-code" aria-hidden="true"></span>
     <br>
     <p>
-        L'objectif de cette méthode est de faire progresser significativement le niveau de sécurité d'un projet en moins de 2 mois.
-        Cette méthode est publique et open source. Chacun peut l'utiliser librement et l'ajuster en fonction de son besoin.
-        Elle nécessite néanmoins l'expérience, l'expertise technique et la partialité d'une prestation d'accompagnement.
-        Je reste à l'écoute de vos besoins et pour toute question autour de cette méthodologie.
+Le projet <a href="https://owasp.org/www-project-application-security-verification-standard/OWASP">Application Security Verification Standard (ASVS)</a> fournit plus de 250 contrôles techniques de 
+sécurité pour les applications. Il fournit également aux développeurs une liste d'exigences pour un développement sécurisé.
     </p>
+    <br>
+</div>
+
+<div class="bgDiv">
+    <br>
+    <h2>Le guide ANSSI: agilité et sécurité numérique</h2>
+    <span class="oi oi-fork" aria-hidden="true"></span>
+    <br>
+    <p>
+        Réalisé par l’ANSSI et la DINSIC, <a href="https://www.ssi.gouv.fr/guide/agilite-et-securite-numeriques-methode-et-outils-a-lusage-des-equipes-projet/">ce guide</a> 
+        explique de manière pratique et concrète comment l’agilité et la sécurité concourent au développement sécurisé des projets et à la gestion du risque numérique.
+    </p>
+    <br>
 </div>
 
 <div>
-    <h2>Périmètre</h2>
-    <span class="oi oi-crop" aria-hidden="true"></span>
     <br>
-    <p>Le champ de cette méthodologie cible les projets applicatifs ainsi que l'infrastructure sur laquelle ils
-        reposent, ce qui inclut:</p>
-    <ul>
-        <li>- toute application métier, qu'il s'agisse d'un environnement Web, industriel, IoT, cloud, hybride, etc.</li>
-        <li>- le middleware, les librairies, les dépendances et les composants tiers</li>
-        <li>- les composants du système d’exploitation et des microservices</li>
-        <br>
-    </ul>
+    <h2>La méthode S.T.R.I.D.E</h2>
+    <span class="oi oi-bolt" aria-hidden="true"></span>
+    <br>
+    <p>
+        la méthode de modélisation des menaces <a href="https://owasp.org/www-community/Threat_Modeling_Process">STRIDE</a> 
+        permet de découvrir les principales faiblesses d'une application afin de prioriser les contrôles de sécurité à mettre en place. Il permet d'intégrer la démarche de sécurisation au Software Development Life Cycle (SDLC).
+    </p>
+    <br>
 </div>
 
-@if (GetEtapes == null)
-{
-    <div class="sk-cube-grid">
-        <div class="sk-cube sk-cube1"></div>
-        <div class="sk-cube sk-cube2"></div>
-        <div class="sk-cube sk-cube3"></div>
-        <div class="sk-cube sk-cube4"></div>
-        <div class="sk-cube sk-cube5"></div>
-        <div class="sk-cube sk-cube6"></div>
-        <div class="sk-cube sk-cube7"></div>
-        <div class="sk-cube sk-cube8"></div>
-        <div class="sk-cube sk-cube9"></div>
-    </div>
-}
-else if ( InputsCheck.SEtapeChek(GetEtapes))
-{
-
-    <div class="bgDiv">
-        <br>
-        <h2>Référentiels</h2>
-        <span class="oi oi-compass" aria-hidden="true"></span>
-        <br>
-
-        @foreach (SEtape E in GetEtapes)
-        {
-            @foreach (Atelier A in E.Ateliers)
-            {
-                TotalPoids += A.Poids;
-                @foreach (Processus P in A.Processus)
-                {
-                    @if (P.Referentiel != null)
-                    {
-                        <a href="@P.Referentiel.Uri">@P.Referentiel.Nom</a>
-                        <br>
-                    }
-                }
-            }
-        }
-        <br>
-    </div>
-
-    <div>
-        <br>
-        <h2>Étapes</h2>
-        <span class="oi oi-key" aria-hidden="true"></span>
-        <br>
-        <ul>
-            @foreach (SEtape E in GetEtapes)
-            {
-                <li><b>@E.Etape.FirstOrDefault()</b> : @E.Etape</li>
-            }
-            <br>
-        </ul>
-
-    </div>
-
-    <div class="bgDiv">
-        <br>
-        <h2>Ateliers</h2>
-        <span class="oi oi-layers" aria-hidden="true"></span>
-        <br>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Id</th>
-                    <th>Atelier</th>
-                    <th>Poids</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (SEtape E in GetEtapes)
-                    @foreach (Atelier A in E.Ateliers)
-                    {
-                        <tr>
-                            <td>@A.Nom</td>
-                            <td>@A.Description</td>
-                            <td>@A.Poids</td>
-                        </tr>
-                    }
-            </tbody>
-        </table>
-        <a>Soit un poids total moyen de @TotalPoids jours pour un accompagnement type. Cette charge est ajustée selon le contexte.</a>
-        <br>
-    </div>
-
-}
-
-<form>
-    <a href="/simple">
-        <button class="button" @onclick=Clear>Nouvel Accompagnement</button>
-        <input type="button" class="button" value="Poursuivre">
-    </a>
-</form>
-
-@code {
-    private SEtape[]? GetEtapes;
-    private int TotalPoids = 0;
-    protected override async Task OnInitializedAsync()
-    {
-        GetEtapes = await Http.GetFromJsonAsync<SEtape[]>("/Data/SIMPLE.json");
-    }
-
-    public async Task Clear()
-    {
-        await localStorage.ClearAsync();
-    }
-}
+<div>
+    <br>
+    <h2>Les guides CIS Benchmarks</h2>
+    <span class="oi oi-cog" aria-hidden="true"></span>
+    <br>
+    <p>
+        les guides <a href="https://www.cisecurity.org/cis-benchmarks/">CIS Benchmarks</a>
+        permettent de renforcer les configurations de nombreux produits dont Azure, Windows, Linux et Docker.
+    </p>
+    <br>
+</div>
