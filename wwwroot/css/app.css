@@ -197,7 +197,7 @@ img {
 }
 
 .bgBan {
-    background-image: url("../Images/bg.jpg");
+    background-image: url("../Images/Code.png");
     background-size: 100% auto;
     transition: background-position 0s !important;
     background-repeat: no-repeat !important;
@@ -205,43 +205,7 @@ img {
     box-sizing: border-box;
     position: relative;
     background-attachment: scroll;
-    background-position-y: -57em;
-}
-
-.bgFormation {
-    background-image: url("../Images/Formation.jpg");
-    background-size: 100% auto;
-    transition: background-position 0s !important;
-    background-repeat: no-repeat !important;
-    background-attachment: fixed !important;
-    box-sizing: border-box;
-    position: relative;
-    background-attachment: scroll;
-    background-position-y: -20em;
-}
-
-.bgAccompagnement {
-    background-image: url("../Images/Accompagnement.jpg");
-    background-size: 100% auto;
-    transition: background-position 0s !important;
-    background-repeat: no-repeat !important;
-    background-attachment: fixed !important;
-    box-sizing: border-box;
-    position: relative;
-    background-attachment: scroll;
-    background-position-y: -21em;
-}
-
-.bgAudits {
-    background-image: url("../Images/Audits.jpg");
-    background-size: 100% auto;
-    transition: background-position 0s !important;
-    background-repeat: no-repeat !important;
-    background-attachment: fixed !important;
-    box-sizing: border-box;
-    position: relative;
-    background-attachment: scroll;
-    background-position-y: -40em;
+    background-position-y: 50%;
 }
 
 
