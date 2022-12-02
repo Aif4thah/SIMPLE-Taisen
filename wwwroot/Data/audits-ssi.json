@@ -1,0 +1,27 @@
+{
+  "h1": "Audits de sécurité",
+  "sh1": "Mes prestations d'audits s'appuient sur la norme ISO-19011 et le Référentiel Général de Sécurité,en particulier concernant les exigences P.A.S.S.I. Les référentiels techniques sont proposés et retenus en fonction du périmètre à auditer.",
+  "articles": [
+    {
+      "h2": "Audit de code source",
+      "oi":  "oi-code",
+      "p": "L’audit de code source consiste en l’analyse de tout ou partie du code source ou des conditions de compilation d’une application dans le but d’y découvrir des vulnérabilités, liées à de mauvaises pratiques de programmation ou des erreurs de logique, qui pourraient avoir un impact en matière de sécurité."
+    },
+    {
+      "h2": "Audit de configuration",
+      "oi": "oi-cog",
+      "p": "L’audit de configuration a pour vocation de vérifier la mise en œuvre de pratiques de sécurité conformes à l’état de l’art et aux exigences et règles internes de l’audité en matière de configuration des dispositifs matériels et logiciels déployés dans un système d’information. Ces dispositifs peuvent notamment être des équipements réseau, des systèmes d'exploitation (serveur ou poste de travail), des applications ou des produits de sécurité."
+    },
+    {
+      "h2": "Audit d’architecture",
+      "oi": "oi-cloud",
+      "p": "L’audit d’architecture consiste en la vérification de la conformité des pratiques de sécurité relatives au choix, au positionnement et à la mise en œuvre des dispositifs matériels et logiciels déployés dans un système d’information à l’état de l’art et aux exigences et règles internes de l’audité. L’audit peut être étendu aux interconnexions avec des réseaux tiers, et notamment Internet."
+    },
+    {
+      "h2": "Tests d’intrusion",
+      "oi": "oi-bug",
+      "p": "Le principe du test d’intrusion est de découvrir des vulnérabilités sur le système d’information audité et de vérifier leur exploitabilité et leur impact, dans les conditions réelles d’une attaque sur le système d’information, à la place d’un attaquant potentiel. Les vulnérabilités testées peuvent également avoir été identifiées au cours d’autres activités d’audit définies dans ce chapitre. Cette activité d’audit peut être réalisée soit depuis l’extérieur du système d’information audité (notamment depuis Internet ou le réseau interconnecté d’un tiers), soit depuis l’intérieur. Un test d’intrusion seul n’a pas vocation à être exhaustif. Il s’agit d’une activité qui doit être effectuée en complément d’autres activités d’audit afin d’en améliorer l’efficacité ou de démontrer la faisabilité de l’exploitation des failles et vulnérabilités découvertes à des fins de sensibilisation."
+    }
+  ]
+
+}

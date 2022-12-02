@@ -1,4 +1,4 @@
 This is a Brave Rewards publisher verification file.
 
 Domain: taisen.fr
-Token: 3e26f474d9bb83efbc50027af1279ec697e2c0a6ea3cc67567b42866af2f923d
+Token: 74097da2c782220ba38b8d2a310b12a34bd70d5ffb7676024b2ef745a9cd0b2b

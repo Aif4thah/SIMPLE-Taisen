@@ -1,38 +1,105 @@
 ﻿@page "/"
+@inject HttpClient Http
+@using Microsoft.AspNetCore.Components.Web;
+
 
 <PageTitle>Taisen solutions</PageTitle>
-
 <link rel="icon" type="image/x-icon" href="~/Images/Favicon.ico" />
 <h1>TAISEN Solutions</h1>
 <p class="sh1">Taisen est une entreprise fondée en 2022. Cette structure me permet de vous accompagner pour la sécurisation de votre système d'information</p>
 
+<!-- à optiomiser et randomiser -->
 <div class="bgBan">
     <br><br>
     <img src="Images/Logov2.png" class="imgBan" alt="Conseil en sécurité des systèmes d’information">
     <br><br>
 </div>
+<!-- fin à optiomiser -->
+
 <center>
     <hr class="line">
 </center>
 
 <div>
     <form>
-        <a href="/accompagnement">
-            <input type="button" class="button" value="Accompagnement">
-        </a>
+        <input type="button" class="button" value="Accompagnement" onclick="@(async () => await loadData("accompagnement"))">
     </form>
-    <br>
+
     <form>
-        <a href="/audits-ssi">
-            <input type="button" class="button" value="Audits de sécurité">
-        </a>
+        <input type="button" class="button" value="Audits" onclick="@(async () => await loadData("audits-ssi"))">
     </form>
-    <br>
+
     <form>
-        <a href="/Formations">
-            <input type="button" class="button" value="Formations">
-        </a>
+        <input type="button" class="button" value="Formations" onclick="@(async () => await loadData("formations"))">
     </form>
-    <br>
 
 </div>
+
+
+@if (description != null)
+{
+    <h2>@description.h1</h2>
+    <p class="sh1">@description.sh1</p>
+
+    <center>
+        <hr class="line">
+    </center>
+
+
+    @foreach (article article in description.articles)
+    {
+        if(bgDiv)
+        {
+            <div class="bgDiv">
+                <br>
+                <h2>@article.h2</h2>
+                <span class="oi @article.oi" aria-hidden="true"></span>
+                <p>@article.p</p>
+                <br>
+            </div>
+        }
+        else
+        {
+         <div>
+            <br>
+            <h2>@article.h2</h2>
+            <span class="oi @article.oi" aria-hidden="true"></span>
+            <p>@article.p</p>
+            <br>
+        </div>
+        }
+        bgDiv = !bgDiv;
+
+    }
+
+}
+
+
+
+@code {
+
+    private descriptionService description { get; set; }
+    public bool bgDiv { get; set; } = true;
+
+    private async Task loadData(string c)
+    {
+        if (c== "accompagnement" || c == "formations" || c == "audits-ssi")
+        {
+            description = await Http.GetFromJsonAsync<descriptionService>("/Data/" + c + ".json");
+        }
+    }
+
+    class descriptionService
+    {
+        public string h1 { get; set; }
+        public string sh1 { get; set; }
+        public article[] articles { get; set; }
+    }
+
+    class article
+    {
+        public string h2 { get; set; }
+        public string oi { get; set; }
+        public string p { get; set; }
+    }
+}

@@ -1,0 +1,27 @@
+{
+  "h1": "Accompagnement",
+  "sh1": " Mon offre d'accompagnement technique s'appuie sur des référentiels à l'état de l'art. L'objectif est de sécuriser vos projets applicatifs et leur infrastructure de manière concrète, cohérente et pragmatique.",
+  "articles": [
+    {
+      "h2": "Le projet OWASP ASVS",
+      "oi": "oi-code",
+      "p": "L'OWASP ASVS fournit plus de 250 contrôles techniques de sécurité pour les applications. Il fournit également aux développeurs une liste d'exigences pour un développement sécurisé."
+    },
+    {
+      "h2": "Le guide ANSSI: agilité et sécurité numérique",
+      "oi": "oi-fork",
+      "p": "Réalisé par l’ANSSI et la DINSIC, ce guide explique de manière pratique et concrète comment l’agilité et la sécurité concourent au développement sécurisé des projets et à la gestion du risque numérique."
+    },
+    {
+      "h2": "La méthode S.T.R.I.D.E",
+      "oi": "oi-bolt",
+      "p": "la méthode de modélisation des menaces STRIDE permet de découvrir les principales faiblesses d'une application afin de prioriser les contrôles de sécurité à mettre en place. Il permet d'intégrer la démarche de sécurisation au Software Development Life Cycle (SDLC)."
+    },
+    {
+      "h2": "Les guides CIS Benchmarks",
+      "oi": "oi-cog",
+      "p": "les guides CIS Benchmarks permettent de renforcer les configurations de nombreux produits dont Azure, Windows, Linux et Docker."
+    }
+  ]
+
+}

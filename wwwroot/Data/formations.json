@@ -1,0 +1,22 @@
+{
+  "h1": "Formations",
+  "sh1": "Mes formations et sensibilisations adressent les différents aspects de la cybersécurité et sont systématiquement adaptées au public visé",
+  "articles": [
+    {
+      "h2": "Entreprises",
+      "oi": "oi-briefcase",
+      "p": "La sécurité est l’affaire de tous ! Les sensibilisations sont adaptées à vos personnels afin de prévenir au maximum les risques pesant sur vos systèmes d'information. Il peut s'agir de sensibilisations annuelles ou de formations spécifiques."
+    },
+    {
+      "h2": "Écoles",
+      "oi": "oi-book",
+      "p": "Jusqu'au Bac+6, de nombreux cours et TP sont réalisés depuis 2018 pour des cursus de chef de projets, développeurs ou experts cybersécurité. Une attention toute particulière est portée aux syllabus et référentiels de formation. Des TP concrets et réalistes permettent l'acquisition des compétences opérationnelles attendues sur le marché du travail."
+    },
+    {
+      "h2": "Particuliers",
+      "oi": "oi-home",
+      "p": "L'objectif est de mieux gérer ses données personnelles et de se protéger des attaques dans notre vie quotidienne. Des formations sur-mesure peuvent être proposées selon le besoin ou le domaine de progression visé. N'hésitez pas à prendre contact."
+    }
+  ]
+
+}
