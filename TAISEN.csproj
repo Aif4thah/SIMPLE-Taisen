@@ -16,6 +16,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Update="wwwroot\Data\redirect.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Update="wwwroot\Data\formations.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

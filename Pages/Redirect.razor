@@ -1,0 +1,72 @@
+﻿@page "/redirect/{i:int}"
+@inject HttpClient Http
+@using Microsoft.AspNetCore.Components.Web;
+
+<PageTitle>Taisen solutions</PageTitle>
+<link rel="icon" type="image/x-icon" href="~/Images/Favicon.ico" />
+<h1>TAISEN Solutions</h1>
+
+<div class="bgBan">
+    <br><br>
+    <img src="Images/Logov2.png" class="imgBan" alt="Conseil en sécurité des systèmes d’information">
+    <br><br>
+</div>
+
+
+<center>
+    <hr class="line">
+</center>
+
+
+@if (description != null)
+{
+    <h2>@description[i].h1</h2>
+    <div class="bgDiv">
+        <br>
+        <p>@description[i].p Afin de vous présenter ces informations de manière efficace vous allez être redirigé vers le site @description[i].site</p>
+    
+    
+        <form>
+            <a href="@description[i].href">
+                <input type="button" class="button" value="Consulter">
+            </a>
+        </form>
+        <br>
+    </div>
+
+}
+else
+{
+    <div class="sk-cube-grid">
+        <div class="sk-cube sk-cube1"></div>
+        <div class="sk-cube sk-cube2"></div>
+        <div class="sk-cube sk-cube3"></div>
+        <div class="sk-cube sk-cube4"></div>
+        <div class="sk-cube sk-cube5"></div>
+        <div class="sk-cube sk-cube6"></div>
+        <div class="sk-cube sk-cube7"></div>
+        <div class="sk-cube sk-cube8"></div>
+        <div class="sk-cube sk-cube9"></div>
+    </div>
+}
+
+
+@code {
+    [Parameter]
+    public int i { get; set; } = 0;
+    private descriptionService[] description { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+            description = await Http.GetFromJsonAsync<descriptionService[]>("/Data/redirect.json");
+    }
+
+    class descriptionService
+    {
+        public string h1 { get; set; }
+        public string p { get; set; }
+        public string site { get; set; }
+        public string href { get; set; }
+    }
+
+}
