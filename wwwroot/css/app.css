@@ -49,7 +49,14 @@ li {
 .sh1 {
     text-align: center !important;
     font-size: x-large;
-    color: #851c1c
+    font-style: italic;
+    color: #9d0e0e
+}
+
+.sh2 {
+    text-align: center !important;
+    font-size: x-large;
+    color: #9d0e0e
 }
 
 .btn-link {
